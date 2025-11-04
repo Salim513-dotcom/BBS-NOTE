@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Research Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav-pills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-pill {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-pill.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin: 1rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-item:hover {
+            border-color: #f5576c;
+            transform: scale(1.05);
+        }
+
+        .feature-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+
+        .comparison-table tr:hover td {
+            background: #f8f9ff;
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            min-width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .method-card {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            border: 2px solid #667eea30;
+        }
+
+        .method-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+        }
+
+        .strength-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .strength-item {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .strength-item:hover {
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            font-size: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-pills {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎓 Business Research Management</h1>
+        <p>Aastha College | Unit 1: Introduction to Research</p>
+    </div>
+
+    <div class="container">
+        <div class="nav-pills">
+            <button class="nav-pill active" onclick="showSection('intro')">📚 Introduction</button>
+            <button class="nav-pill" onclick="showSection('types')">🔬 Types of Research</button>
+            <button class="nav-pill" onclick="showSection('approaches')">📊 Approaches & Paradigms</button>
+            <button class="nav-pill" onclick="showSection('management')">💼 Management Research</button>
+            <button class="nav-pill" onclick="showSection('scientific')">🔭 Scientific Thinking</button>
+            <button class="nav-pill" onclick="showSection('ethics')">⚖️ Ethics</button>
+            <button class="nav-pill" onclick="showSection('qualitative')">🎯 Qualitative Research</button>
+        </div>
+
+        <!-- INTRODUCTION SECTION -->
+        <div id="intro" class="section active">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔍</span>Meaning of Research</h2>
+                <div class="definition-box">
+                    <h3>Etymology: RE + SEARCH</h3>
+                    <p><strong>Initial meaning:</strong> Search again for what was lost</p>
+                    <p><strong>Modern meaning:</strong> Finding new knowledge, skills, or technology</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📖</span>Key Definitions</h2>
+                <div class="method-card">
+                    <h3>1. F.N. Kerlinger</h3>
+                    <p>"Research is a <strong>systematic, controlled, empirical and critical investigation</strong> of hypothetical proposition."</p>
+                </div>
+                <div class="method-card">
+                    <h3>2. General Definition</h3>
+                    <p>"Research is <strong>well documented and organized analysis</strong> of the subject or theory or postulate."</p>
+                </div>
+                <div class="method-card">
+                    <h3>3. Modern Definition</h3>
+                    <p>"Research is <strong>systematic and well organized investigation</strong> of specific problem or improvement of knowledge using modern technology."</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⭐</span>Nature & Features of Research</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-number">1</div>
+                        <h3>Objective</h3>
+                        <p>Done with certain aims and hypotheses</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">2</div>
+                        <h3>Generalizable</h3>
+                        <p>Easy to execute and simplify</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">3</div>
+                        <h3>Systematic</h3>
+                        <p>Follows developed plans and procedures</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">4</div>
+                        <h3>Controlled</h3>
+                        <p>Controls cost, time, technology</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">5</div>
+                        <h3>Unbiased</h3>
+                        <p>Free from personal biasness</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">6</div>
+                        <h3>Solution-Oriented</h3>
+                        <p>Directed towards problem solving</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">7</div>
+                        <h3>Logical</h3>
+                        <p>Based on logical reasoning</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">8</div>
+                        <h3>Reproducible</h3>
+                        <p>Same method gives same results</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">9</div>
+                        <h3>Replicable</h3>
+                        <p>Repeatable under similar conditions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔬</span>Scientific Research Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">💪</div>
+                        <h3>Rigorous</h3>
+                        <p>True for all, not conditional</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎯</div>
+                        <h3>Purposive</h3>
+                        <p>Has clear purpose</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎲</div>
+                        <h3>Objective</h3>
+                        <p>Based on facts</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">✅</div>
+                        <h3>Testable</h3>
+                        <p>Can be verified</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔁</div>
+                        <h3>Replicable</h3>
+                        <p>Consistent results</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">💎</div>
+                        <h3>Precise</h3>
+                        <p>High degree of truth</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📝</div>
+                        <h3>Operational</h3>
+                        <p>Clear definitions</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🌍</div>
+                        <h3>Generalizable</h3>
+                        <p>Universally true</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TYPES OF RESEARCH SECTION -->
+        <div id="types" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔬</span>Types of Research</h2>
+                
+                <div class="method-card">
+                    <h3>1️⃣ Basic/Fundamental Research</h3>
+                    <p><strong>Goal:</strong> Find basic principles or theorems of knowledge</p>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="emoji">✨</div>
+                            <p>Results can be generalized</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">📐</div>
+                            <p>Forms fundamental principles</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">🔍</div>
+                            <p>Finds related factors</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">⚡</div>
+                            <p>Goes to depth of problems</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">💡</div>
+                            <p>Searches alternative solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3>2️⃣ Applied/Action Research</h3>
+                    <p><strong>Goal:</strong> Find solution to particular professional problems</p>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="emoji">🎯</div>
+                            <p>Solves real-life problems</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">⚡</div>
+                            <p>Results used immediately</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">👥</div>
+                            <p>Widely used in social phenomena</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">⏰</div>
+                            <p>Done when required</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">📈</div>
+                            <p>For new policies & social progress</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⚖️</span>Basic vs Applied Research</h2>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Basic Research</th>
+                        <th>Applied Research</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Objective</strong></td>
+                        <td>Theory development</td>
+                        <td>Problem solution</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Time</strong></td>
+                        <td>Unknown duration</td>
+                        <td>Short duration</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Focus</strong></td>
+                        <td>Principles & knowledge</td>
+                        <td>Specific problem only</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Generalization</strong></td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conditions</strong></td>
+                        <td>No specific conditions</td>
+                        <td>Specific conditions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Difficulty</strong></td>
+                        <td>Difficult</td>
+                        <td>Easy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Skill Required</strong></td>
+                        <td>High</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cost</strong></td>
+                        <td>Expensive</td>
+                        <td>Low cost</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔄</span>Scientific Research Process</h2>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h3>Realizing a Problem</h3>
+                            <p>Identify that a problem exists</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h3>Identification of Problem</h3>
+                            <p>Clearly define the problem</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h3>Review of Literatures</h3>
+                            <p>Study existing research</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h3>Hypothesis Formulation</h3>
+                            <p>Create testable predictions</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div>
+                            <h3>Research Design</h3>
+                            <p>Plan the research methodology</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">6</div>
+                        <div>
+                            <h3>Collection of Data</h3>
+                            <p>Gather necessary information</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">7</div>
+                        <div>
+                            <h3>Analysis of Data</h3>
+                            <p>Process and examine data</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">8</div>
+                        <div>
+                            <h3>Interpretation & Generalization</h3>
+                            <p>Draw conclusions and implications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- APPROACHES & PARADIGMS SECTION -->
+        <div id="approaches" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📊</span>Research Approaches</h2>
+                
+                <div class="method-card">
+                    <h3>1️⃣ Quantitative Research</h3>
+                    <div class="emoji" style="font-size: 3rem; text-align: center;">📈</div>
+                    <p><strong>Definition:</strong> Research conducted using numerical data for analysis</p>
+                    <div class="highlight-box">
+                        <h4>Key Characteristics:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>Completely data and fact based</li>
+                            <li>Deals with numbers and statistical tools</li>
+                            <li>Analysis done with numbers only</li>
+                            <li>Tools: Mean, Median, Mode, SD, Regression, t-test, z-test</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3>2️⃣ Qualitative Research</h3>
+                    <div class="emoji" style="font-size: 3rem; text-align: center;">💭</div>
+                    <p><strong>Definition:</strong> Research dealing with subjective phenomena beyond numbers</p>
+                    <div class="highlight-box">
+                        <h4>Key Characteristics:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>Measures real responses of social cases</li>
+                            <li>Does not ignore minority data</li>
+                            <li>Measures people's perspectives</li>
+                            <li>Tools: Survey, Interview, Content Analysis, Grounded Theory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🎭</span>Research Paradigms</h2>
+                <p style="margin-bottom: 1.5rem;"><strong>Paradigm:</strong> A special way of thinking under specific guidelines and principles</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-item" style="grid-column: 1;">
+                        <h3 style="color: #667eea; font-size: 1.5rem;">Positivism</h3>
+                        <div class="emoji">🔬</div>
+                        <p><strong>Focus:</strong> Hypothesis testing using quantitative analysis</p>
+                        <div style="text-align: left; margin-top: 1rem;">
+                            <p>✅ Follows universal laws</p>
+                            <p>✅ Rigorous and rigid</p>
+                            <p>✅ Based on hypothesis</p>
+                            <p>✅ Quantitative data</p>
+                            <p>✅ Scientific & deductive</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item" style="grid-column: 2;">
+                        <h3 style="color: #f5576c; font-size: 1.5rem;">Interpretivism</h3>
+                        <div class="emoji">🎨</div>
+                        <p><strong>Focus:</strong> Qualitative data and social phenomena</p>
+                        <div style="text-align: left; margin-top: 1rem;">
+                            <p>✅ Subjective social realities</p>
+                            <p>✅ Flexible for individuals</p>
+                            <p>✅ Accepts minorities</p>
+                            <p>✅ For social cases</p>
+                            <p>✅ Methods: Interviews, Observation, Focus Groups</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MANAGEMENT RESEARCH SECTION -->
+        <div id="management" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">💼</span>Management Research</h2>
+                
+                <div class="definition-box">
+                    <h3>Definitions:</h3>
+                    <p><strong>Zimkund:</strong> "Systematic and objective process of gathering, recording and analyzing data for aid in making business decisions."</p>
+                    <p style="margin-top: 1rem;"><strong>General:</strong> "Identifies and analyzes problems and develops managerial tools for proper business decisions."</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🌟</span>Nature of Management Research</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-number">1</div>
+                        <h3>Trans-disciplinary</h3>
+                        <p>Deals with various subjects: Strategy, Trade, Structure, Environment</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">2</div>
+                        <h3>Commercial Advantages</h3>
+                        <p>Focuses on business advantages for progressive growth</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">3</div>
+                        <h3>Practical</h3>
+                        <p>Finds benefits through practical work</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">4</div>
+                        <h3>Double Hurdle</h3>
+                        <p>Interacts between theory and practice</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🎯</span>Business Research for Decision Making</h2>
+                
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h3>Identify Problem</h3>
+                            <p>Determine nature, situation, and causes of organizational problems. Scan and explore issues.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h3>Diagnose & Assess</h3>
+                            <p>Identify and diagnose problem clarity. Specify problems and causes. Explore opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h3>Select Course of Action</h3>
+                            <p>Choose the best alternative after research. Example: Select location for rice mill based on costs, resources.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h3>Implement Action</h3>
+                            <p>Execute the selected plan. Follow auxiliary plans for proper implementation.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div>
+                            <h3>Evaluate Results</h3>
+                            <p>Evaluate to find if objectives are met. Use feedback for control of strategies and tactics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCIENTIFIC THINKING SECTION -->
+        <div id="scientific" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔭</span>Scientific Thinking in Management</h2>
+                
+                <div class="definition-box">
+                    <h3>What is Scientific Thinking?</h3>
+                    <p>A process containing proper planning, foresight, commitment that is self-directed, self-disciplined, self-monitored and self-corrective.</p>
+                    <p style="margin-top: 1rem;"><strong>Goal:</strong> Problem solving or knowledge improvement</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>Scientific Research Steps:</h3>
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <p>Identify a problem</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <p>Study philosophy and techniques</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <p>Develop hypothesis</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <p>Test hypothesis</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <p>Find conclusion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⚠️</span>Difficulties in Management Research</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">🧩</div>
+                        <h4>Complexity of Subject</h4>
+                        <p>Social and business phenomena are complex</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📏</div>
+                        <h4>Measurement Issues</h4>
+                        <p>Difficult to obtain accurate measurements</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">👥</div>
+                        <h4>Social Perception</h4>
+                        <p>Varying perceptions in society</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">💭</div>
+                        <h4>Subjectivity</h4>
+                        <p>Social events are subjective</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎨</div>
+                        <h4>Qualitative Nature</h4>
+                        <p>Many social events are qualitative</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🌍</div>
+                        <h4>Universalization</h4>
+                        <p>Difficult to make universal</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎯</div>
+                        <h4>Vested Interest</h4>
+                        <p>Researcher's personal interests</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">❤️</div>
+                        <h4>Emotional Tendency</h4>
+                        <p>Different emotional responses</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETHICS SECTION -->
+        <div id="ethics" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⚖️</span>Research Ethics</h2>
+                
+                <div class="definition-box">
+                    <h3>What is Ethics?</h3>
+                    <p><strong>Ethics:</strong> Principles of behavior that help distinguish right from wrong</p>
+                    <p style="margin-top: 1rem;"><strong>Research Ethics:</strong> Appropriateness of researcher's behavior in relation to the rights of participants affected by the research</p>
+                </div>
+
+                <div class="highlight-box" style="background: linear-gradient(135deg, #ff7675 0%, #d63031 100%); color: white;">
+                    <h3 style="color: white;">⚠️ Unethical Behaviors to AVOID:</h3>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">🎭</div>
+                        <h4>Deception</h4>
+                        <p>Deceiving participants</p>
+                    </div>
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">🔧</div>
+                        <h4>Fabrication</h4>
+                        <p>Fabricating data</p>
+                    </div>
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">🤥</div>
+                        <h4>Dishonesty</h4>
+                        <p>Being dishonest</p>
+                    </div>
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">⚖️</div>
+                        <h4>Illegality</h4>
+                        <p>Breaking laws</p>
+                    </div>
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">👁️</div>
+                        <h4>Lack of Objectivity</h4>
+                        <p>Being subjective only</p>
+                    </div>
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">🚫</div>
+                        <h4>Discrimination</h4>
+                        <p>Discriminating participants</p>
+                    </div>
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">©️</div>
+                        <h4>IP Violation</h4>
+                        <p>Disrespecting intellectual property</p>
+                    </div>
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">🌐</div>
+                        <h4>Cultural Disrespect</h4>
+                        <p>Ignoring cultural norms</p>
+                    </div>
+                    <div class="feature-item" style="background: linear-gradient(135deg, #ff757520 0%, #d6303120 100%); border-color: #d63031;">
+                        <div class="emoji">🛡️</div>
+                        <h4>Rights Violation</h4>
+                        <p>Not protecting participants</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUALITATIVE RESEARCH SECTION -->
+        <div id="qualitative" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🎯</span>Qualitative Research</h2>
+                
+                <div class="definition-box">
+                    <h3>What is Qualitative Research?</h3>
+                    <p>Research connected to subjective phenomena that explores and interprets perceptions, opinions, behaviors, motivation, culture, and attitudes of people.</p>
+                    <p style="margin-top: 1rem;"><strong>Key Point:</strong> Deals with human and social behaviors, mentality, and intuition - not just data and facts.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⭐</span>Features of Qualitative Research</h2>
+                
+                <div class="method-card">
+                    <h3>1️⃣ Studying Real-World Conditions</h3>
+                    <p>Studies people's lives under real-world conditions. Captures deep internal thoughts beyond simple yes/no responses. Extracts real perspectives that people don't normally express.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>2️⃣ Representing Views & Perspectives</h3>
+                    <p>Different people have different views. Involves real events not just majority data. Captures perspectives even from minorities.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>3️⃣ Covering Contextual Conditions</h3>
+                    <p>Events happen under certain conditions. Watches conditions properly and explores reality, not just results.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>4️⃣ Contributing Insights</h3>
+                    <p>Based on reality of events. Watches both existing and emerging concepts in social sectors. Explains insights of people.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>5️⃣ Multiple Sources of Evidence</h3>
+                    <p>Uses different data sources and multidimensional views. Studies real life through depth observations and interviews.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🧠</span>Assumptions of Qualitative Research</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-number">1</div>
+                        <h3>Interaction</h3>
+                        <p>Nice interaction required to understand real problems from respondent's perspective</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">2</div>
+                        <h3>Field Work</h3>
+                        <p>Must reach real field, collect data personally, understand natural conditions</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">3</div>
+                        <h3>Descriptive</h3>
+                        <p>Full description needed: words, visions, interviews, opinions</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">4</div>
+                        <h3>Inductive</h3>
+                        <p>Develops new principles through observation, not verifying old ones</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">5</div>
+                        <h3>Multiple Realities</h3>
+                        <p>Social events result from multiple causes and factors</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">6</div>
+                        <h3>Multiple Perspectives</h3>
+                        <p>Includes voices from various situations. Covers multiple viewpoints</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">7</div>
+                        <h3>Verification</h3>
+                        <p>Verifies information with informants. Triangulates among sources</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📋</span>Common Practices</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">🔄</div>
+                        <h3>Flexible Design</h3>
+                        <p>Can change research design during field work if necessary</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🌾</div>
+                        <h3>Field-Based Data</h3>
+                        <p>Everything collected, recorded, written in field is kept safe</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📝</div>
+                        <h3>No Numeric Data</h3>
+                        <p>Uses interviews, discussions, observations - not numbers</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎨</div>
+                        <h3>Different Interpretation</h3>
+                        <p>Subjective and inductive. Different people may interpret differently</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔬</span>Methods of Qualitative Research</h2>
+                
+                <div class="method-card">
+                    <h3>1️⃣ Case Study</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">📁</div>
+                    <p>Deals with a single case rather than a sample or population. Solves particular problem of specific organization. Results cannot be generalized to others.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>2️⃣ Grounded Theory</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">🏗️</div>
+                    <p>Developed by Glaser & Strauss (1967). Complex interactive process with generative questions. Links gathered data with theoretical concepts. Elements: concepts, categories, propositions.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>3️⃣ Ethnographic Study</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">🌍</div>
+                    <p>Studies intact cultural group in natural setting over specific period. Groups share common social experience, location, or characteristics. Real-life study of particular ethnic groups.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>4️⃣ Phenomenological Study</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">💫</div>
+                    <p>Study of human experiences and structures within which humans experience the world. Focuses on subjective experiences and interpretations. Long-time study of particular groups.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>5️⃣ Participatory Research</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">🤝</div>
+                    <p>Based on participatory management theory. Related people made participants in every action. Results distributed across organization simultaneously.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>6️⃣ Field Research</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">🎒</div>
+                    <p>Reaches field to see reality and actual conditions. Observes activities, physical conditions of locality. Creates notes, reports, and collects opinions.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">✅</span>Building Credibility</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">🔍</div>
+                        <h3>Transparency</h3>
+                        <p>Process must be transparent. All data available for inspection. Real observation and good results.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📐</div>
+                        <h3>Methodicalness</h3>
+                        <p>Follow proper research process. Use prescribed methods. Work with honesty and efficiency.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📊</div>
+                        <h3>Evidence-Based</h3>
+                        <p>Completely based on evidence. Language and words of respondents are main evidence. Decisions must be stable and trustable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">💪</span>Strengths of Qualitative Research</h2>
+                
+                <div class="strength-list">
+                    <div class="strength-item">
+                        <div class="emoji">🧩</div>
+                        <p>Useful for describing complex phenomena</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">👤</div>
+                        <p>Provides individual case information</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">🔬</div>
+                        <p>Examines cases in detail and depth</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">🔄</div>
+                        <p>Framework is flexible</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">🎭</div>
+                        <p>Captures real human behavior</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">⚡</div>
+                        <p>Able to find complications</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">📍</div>
+                        <p>Finds reality for local area</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">💡</div>
+                        <p>Results in explanatory theory</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all pills
+            const pills = document.querySelectorAll('.nav-pill');
+            pills.forEach(pill => {
+                pill.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked pill
+            event.target.classList.add('active');
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add smooth scroll animation on load
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add hover effect to cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
