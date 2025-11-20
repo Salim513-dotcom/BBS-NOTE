@@ -255,12 +255,12 @@
             font-size: 1.4rem;
         }
 
-        .highlight-box {
-            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+        .clean-highlight {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e9ecef 100%);
             padding: 1.5rem;
             border-radius: 15px;
             margin: 1rem 0;
-            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+            border-left: 5px solid #74b9ff;
         }
 
         .strength-list {
@@ -365,6 +365,34 @@
             margin-bottom: 0.5rem;
         }
 
+        .example-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            border-left: 5px solid #7986cb;
+        }
+
+        .search-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .tool-item {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8rem;
@@ -387,7 +415,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Unit 2: Literature Searching & Theoretical Framework</h1>
+        <h1>Unit 2: Literature Searching & Theoretical Framework </h1>
         
     </div>
 
@@ -535,25 +563,25 @@
                     </div>
                 </div>
                 
-                <div class="highlight-box">
+                <div class="clean-highlight">
                     <h3>Top Search Tools:</h3>
-                    <div class="feature-grid">
-                        <div class="feature-item">
+                    <div class="search-tools">
+                        <div class="tool-item">
                             <div class="emoji">🔍</div>
                             <h3>Google Scholar</h3>
                             <p>Free academic search engine</p>
                         </div>
-                        <div class="feature-item">
+                        <div class="tool-item">
                             <div class="emoji">📚</div>
                             <h3>University Libraries</h3>
                             <p>Access to paid journals</p>
                         </div>
-                        <div class="feature-item">
+                        <div class="tool-item">
                             <div class="emoji">🌐</div>
                             <h3>Research Databases</h3>
                             <p>Specialized academic sources</p>
                         </div>
-                        <div class="feature-item">
+                        <div class="tool-item">
                             <div class="emoji">📄</div>
                             <h3>Online Journals</h3>
                             <p>Direct publisher access</p>
@@ -690,7 +718,7 @@
                     </div>
                 </div>
                 
-                <div class="highlight-box">
+                <div class="clean-highlight">
                     <h3>How They Connect:</h3>
                     <div class="feature-grid">
                         <div class="feature-item">
@@ -733,7 +761,7 @@
                 <div class="method-card">
                     <h3><span class="visual-signal signal-1">1</span> Management Problem</h3>
                     <p><strong>Simple Explanation:</strong> A real-world issue that organizations face and need solutions for.</p>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Example: CG TV Sales Problem</h4>
                         <p>Company noticed TV sales were dropping despite advertising - management needed to figure out why and fix it.</p>
                     </div>
@@ -742,7 +770,7 @@
                 <div class="method-card">
                     <h3><span class="visual-signal signal-2">2</span> Research Problem</h3>
                     <p><strong>Simple Explanation:</strong> Turning the management problem into a specific question that research can answer.</p>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Example Research Question:</h4>
                         <p>"Does the new TV advertisement actually increase sales?"</p>
                     </div>
@@ -751,7 +779,7 @@
                 <div class="method-card">
                     <h3><span class="visual-signal signal-3">3</span> Research Questions</h3>
                     <p><strong>Simple Explanation:</strong> Breaking the main research problem into smaller, specific questions.</p>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Example Smaller Questions:</h4>
                         <ul style="margin-left: 1.5rem; line-height: 2;">
                             <li>Can staff training improve sales?</li>
@@ -811,7 +839,7 @@
                     </div>
                 </div>
                 
-                <div class="highlight-box">
+                <div class="clean-highlight">
                     <h3>Example Hypothesis:</h3>
                     <p>"People with more education participate more in politics."</p>
                 </div>
@@ -869,7 +897,7 @@
                     </div>
                 </div>
                 
-                <div class="highlight-box">
+                <div class="clean-highlight">
                     <h3>Hypothesis Development Process:</h3>
                     <div class="process-flow">
                         <div class="process-step">
@@ -903,7 +931,7 @@
                 <div class="method-card">
                     <h3><span class="visual-signal signal-1">1</span> Descriptive Hypothesis</h3>
                     <p><strong>Simple Explanation:</strong> Describes characteristics of a single variable.</p>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Examples:</h4>
                         <ul style="margin-left: 1.5rem; line-height: 2;">
                             <li>NABIL Bank shareholders prefer bonus dividends</li>
@@ -915,7 +943,7 @@
                 <div class="method-card">
                     <h3><span class="visual-signal signal-2">2</span> Relational Hypothesis</h3>
                     <p><strong>Simple Explanation:</strong> Shows how two or more variables are connected.</p>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Examples:</h4>
                         <ul style="margin-left: 1.5rem; line-height: 2;">
                             <li>Higher income families spend more on recreation</li>
@@ -929,14 +957,14 @@
                     <h3><span class="visual-signal signal-3">3</span> Directional vs Non-directional</h3>
                     <p><strong>Directional:</strong> Predicts specific direction of relationship</p>
                     <p><strong>Non-directional:</strong> Just says relationship exists without specifying direction</p>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Directional Examples:</h4>
                         <ul style="margin-left: 1.5rem; line-height: 2;">
                             <li>Younger workers are less motivated than older workers</li>
                             <li>More workload means less job satisfaction</li>
                         </ul>
                     </div>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Non-directional Examples:</h4>
                         <ul style="margin-left: 1.5rem; line-height: 2;">
                             <li>Nepalese and Chinese work cultures differ</li>
@@ -949,14 +977,14 @@
                     <h3><span class="visual-signal signal-4">4</span> Null vs Alternative</h3>
                     <p><strong>Null (H₀):</strong> Says "no relationship" between variables</p>
                     <p><strong>Alternative (H₁):</strong> Says "relationship exists" between variables</p>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Null Hypothesis Examples:</h4>
                         <ul style="margin-left: 1.5rem; line-height: 2;">
                             <li>Training doesn't affect productivity</li>
                             <li>No gender difference in office work performance</li>
                         </ul>
                     </div>
-                    <div class="highlight-box">
+                    <div class="example-box">
                         <h4>Alternative Hypothesis Examples:</h4>
                         <ul style="margin-left: 1.5rem; line-height: 2;">
                             <li>Training improves productivity</li>
@@ -992,7 +1020,7 @@
                     </div>
                 </div>
                 
-                <div class="highlight-box">
+                <div class="clean-highlight">
                     <h3>Deductive Process:</h3>
                     <div class="process-flow">
                         <div class="process-step">
@@ -1038,7 +1066,7 @@
                     </div>
                 </div>
                 
-                <div class="highlight-box">
+                <div class="clean-highlight">
                     <h3>Inductive Process:</h3>
                     <div class="process-flow">
                         <div class="process-step">
