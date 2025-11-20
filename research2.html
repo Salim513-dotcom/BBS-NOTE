@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2 – Literature Searching & Theoretical Framework</title>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+            color:#222; overflow-x:hidden;
+        }
+        .header{
+            background:rgba(255,255,255,0.96);
+            padding:2rem;text-align:center;
+            box-shadow:0 4px 20px rgba(0,0,0,0.15);
+            position:sticky;top:0;z-index:100;
+        }
+        .header h1{
+            color:#667eea;
+            font-size:2.3rem;
+            animation:slideDown .8s ease;
+        }
+        .header p{color:#666}
+
+        @keyframes slideDown{from{opacity:0;transform:translateY(-25px)}to{opacity:1;transform:translateY(0)}}
+
+        .container{max-width:1400px;margin:0 auto;padding:2rem}
+
+        .card{
+            background:white;border-radius:22px;padding:1.8rem;
+            margin-bottom:2rem;box-shadow:0 8px 30px rgba(0,0,0,0.15);
+            transition:all .3s ease;
+        }
+        .card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+
+        .card-title{
+            font-size:1.9rem;color:#667eea;margin-bottom:1.2rem;
+            display:flex;align-items:center;gap:1rem;
+        }
+
+        .definition-box{
+            background:linear-gradient(135deg,#667eea15 0%,#764ba215 100%);
+            padding:1.2rem;border-left:6px solid #667eea;
+            border-radius:15px;margin:1rem 0;
+        }
+
+        .method-card{
+            background:linear-gradient(135deg,#667eea10 0%,#764ba210 100%);
+            padding:1.3rem;border-radius:15px;margin:1rem 0;
+            border:2px solid #667eea30;
+        }
+
+        .feature-grid{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:1.5rem;margin:1.5rem 0;
+        }
+        .feature-item{
+            background:linear-gradient(135deg,#f093fb10 0%,#f5576c10 100%);
+            padding:1.2rem;border-radius:15px;text-align:center;
+            border:2px solid transparent;transition:all .3s ease;
+        }
+        .feature-item:hover{transform:scale(1.05);border-color:#f5576c}
+
+        .feature-number{
+            display:inline-block;width:50px;height:50px;border-radius:50%;
+            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+            color:white;line-height:50px;margin-bottom:1rem;font-weight:bold;
+        }
+
+        .process-flow{display:flex;flex-direction:column;gap:1rem}
+        .process-step{
+            background:#fff;border-left:6px solid #667eea;padding:1.2rem;
+            border-radius:15px;display:flex;gap:1rem;align-items:center;
+        }
+        .step-number{
+            width:55px;height:55px;border-radius:50%;
+            background:linear-gradient(135deg,#667eea,#764ba2);
+            display:flex;justify-content:center;align-items:center;
+            font-size:1.4rem;color:white;font-weight:bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>📘 Unit 2: Literature Searching & Theoretical Framework</h1>
+        <p>Aastha College – Business Research Management</p>
+    </div>
+
+    <div class="container">
+
+        <!-- INTRO -->
+        <div class="card">
+            <h2 class="card-title">📚 Concept of Literature Review</h2>
+            <p>Research becomes strong only through continuous study, review of past works, books, journals, dissertations and reports related to the topic.</p>
+
+            <div class="definition-box">
+                <h3>Definition Highlights</h3>
+                <p><strong>Walliman:</strong> “A summary and analysis of current knowledge about a topic.”</p>
+                <p><strong>Ganter & Cardesco:</strong> “A self-contained unit that critically analyzes prior studies.”</p>
+                <p><strong>General:</strong> Summary of published or unpublished studies for researcher’s use.</p>
+            </div>
+        </div>
+
+        <!-- REASONS -->
+        <div class="card">
+            <h2 class="card-title">🎯 Why Study Literature Review?</h2>
+
+            <div class="feature-grid">
+                <div class="feature-item"><div class="feature-number">1</div><p>Identify what has or hasn’t been investigated.</p></div>
+                <div class="feature-item"><div class="feature-number">2</div><p>Develop explanation for phenomena.</p></div>
+                <div class="feature-item"><div class="feature-number">3</div><p>Find alternative research ideas.</p></div>
+                <div class="feature-item"><div class="feature-number">4</div><p>Identify methodology used.</p></div>
+                <div class="feature-item"><div class="feature-number">5</div><p>Identify issues in earlier research.</p></div>
+                <div class="feature-item"><div class="feature-number">6</div><p>Find data sources.</p></div>
+                <div class="feature-item"><div class="feature-number">7</div><p>Identify variables & hypothesis.</p></div>
+                <div class="feature-item"><div class="feature-number">8</div><p>Build foundation for research work.</p></div>
+            </div>
+        </div>
+
+        <!-- PURPOSES -->
+        <div class="card">
+            <h2 class="card-title">🌟 Purposes of Literature Review</h2>
+
+            <div class="method-card"><h3>1️⃣ Know Existing Research</h3><p>Prevents duplication and identifies untouched issues.</p></div>
+            <div class="method-card"><h3>2️⃣ Identify Research Gap</h3><p>Find contradictions or unexplored areas.</p></div>
+            <div class="method-card"><h3>3️⃣ Develop Research Design</h3><p>Select variables, tools, techniques, procedures.</p></div>
+            <div class="method-card"><h3>4️⃣ Build Theoretical Framework</h3><p>Supports hypothesis development and empirical analysis.</p></div>
+            <div class="method-card"><h3>5️⃣ Learn Data Analysis Methods</h3><p>Choose appropriate analytical tools.</p></div>
+            <div class="method-card"><h3>6️⃣ Select Research Design Type</h3><p>Decide qualitative, quantitative or mixed design.</p></div>
+            <div class="method-card"><h3>7️⃣ Update Current Issues</h3><p>Keep research aligned with new developments.</p></div>
+        </div>
+
+        <!-- TIPS -->
+        <div class="card">
+            <h2 class="card-title">📝 Tips for Writing a Good Literature Review</h2>
+
+            <div class="feature-grid">
+                <div class="feature-item"><p>Arrange notes in logical order.</p></div>
+                <div class="feature-item"><p>Identify major themes.</p></div>
+                <div class="feature-item"><p>Sort articles under headings.</p></div>
+                <div class="feature-item"><p>Organize topic & subtopics clearly.</p></div>
+                <div class="feature-item"><p>Avoid long, confusing paragraphs.</p></div>
+                <div class="feature-item"><p>Rewrite, rearrange, refine.</p></div>
+                <div class="feature-item"><p>Draft → Review → Improve.</p></div>
+            </div>
+        </div>
+
+        <!-- INTERNET SEARCH -->
+        <div class="card">
+            <h2 class="card-title">🌐 Literature Search Through Internet</h2>
+            <p>Internet makes research easier using search engines and e-libraries.</p>
+
+            <div class="feature-grid">
+                <div class="feature-item"><p><strong>Google</strong>: www.google.com</p></div>
+                <div class="feature-item"><p><strong>Yahoo</strong>: www.yahoo.com</p></div>
+                <div class="feature-item"><p><strong>Go</strong>: www.go.com</p></div>
+                <div class="feature-item"><p><strong>HotBot</strong>: www.hotbot.com</p></div>
+            </div>
+        </div>
+
+        <!-- RELATION -->
+        <div class="card">
+            <h2 class="card-title">🔗 Relation of Literature to Research</h2>
+            <div class="method-card"><h3>1️⃣ Know Concepts</h3><p>Helps understand historical, modern, and scientific context.</p></div>
+            <div class="method-card"><h3>2️⃣ Select Topic</h3><p>Gap between old and new research guides topic selection.</p></div>
+            <div class="method-card"><h3>3️⃣ Identify Variables</h3><p>Previous studies reveal measurable domains.</p></div>
+            <div class="method-card"><h3>4️⃣ Build Conceptual Framework</h3></div>
+            <div class="method-card"><h3>5️⃣ Decide Research Design</h3></div>
+            <div class="method-card"><h3>6️⃣ Select Data Collection Tools</h3></div>
+            <div class="method-card"><h3>7️⃣ Select Data Analysis Tools</h3></div>
+        </div>
+
+        <!-- THEORETICAL FRAMEWORK -->
+        <div class="card">
+            <h2 class="card-title">🏛️ Theoretical Framework</h2>
+
+            <div class="definition-box">
+                <p>A conceptual model showing relationships among factors related to the problem.</p>
+                <p>Developed after literature review + field information.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item"><div class="feature-number">1</div><p>Frame for data collection.</p></div>
+                <div class="feature-item"><div class="feature-number">2</div><p>Base for data analysis.</p></div>
+                <div class="feature-item"><div class="feature-number">3</div><p>Identifies variables.</p></div>
+                <div class="feature-item"><div class="feature-number">4</div><p>Helps interpret results.</p></div>
+                <div class="feature-item"><div class="feature-number">5</div><p>Relates theory & problem.</p></div>
+            </div>
+        </div>
+
+        <!-- THEORY & RESEARCH -->
+        <div class="card">
+            <h2 class="card-title">🔬 Theory & Research Relationship</h2>
+            <p>Theory guides research; research verifies, improves, or creates theory.</p>
+
+            <div class="feature-grid">
+                <div class="feature-item"><p>Concepts</p></div>
+                <div class="feature-item"><p>Variables</p></div>
+                <div class="feature-item"><p>Propositions</p></div>
+                <div class="feature-item"><p>Models</p></div>
+                <div class="feature-item"><p>Hypothesis</p></div>
+            </div>
+        </div>
+
+        <!-- APPROACHES -->
+        <div class="card">
+            <h2 class="card-title">🧠 Research Approaches</h2>
+
+            <div class="method-card">
+                <h3>Deductive Approach 🔽</h3>
+                <p>Top → Down (Theory → Hypothesis → Observation → Conclusion)</p>
+            </div>
+
+            <div class="method-card">
+                <h3>Inductive Approach 🔼</h3>
+                <p>Bottom → Up (Observation → Pattern → Hypothesis → Theory)</p>
+            </div>
+        </div>
+
+        <!-- RESEARCH PROBLEM -->
+        <div class="card">
+            <h2 class="card-title">❓ Research Problem</h2>
+
+            <div class="definition-box">
+                <p><strong>Selkaran:</strong> Gap between actual & ideal condition.</p>
+                <p><strong>Kerlinger:</strong> Relation between two or more variables.</p>
+            </div>
+
+            <h3 style="margin-top:1rem;">Identification Steps:</h3>
+
+            <div class="process-flow">
+                <div class="process-step"><div class="step-number">1</div><p>Management Problem</p></div>
+                <div class="process-step"><div class="step-number">2</div><p>Translate to Research Problem</p></div>
+                <div class="process-step"><div class="step-number">3</div><p>Research Questions</p></div>
+            </div>
+        </div>
+
+        <!-- HYPOTHESIS -->
+        <div class="card">
+            <h2 class="card-title">📌 Hypothesis</h2>
+
+            <div class="definition-box">
+                <p>“A logical, testable statement showing expected relationship between variables.”</p>
+            </div>
+
+            <h3>Role of Hypothesis:</h3>
+            <div class="feature-grid">
+                <div class="feature-item"><p>Select facts</p></div>
+                <div class="feature-item"><p>Guide research direction</p></div>
+                <div class="feature-item"><p>Determine data needed</p></div>
+                <div class="feature-item"><p>Select / reject theories</p></div>
+                <div class="feature-item"><p>Suggest analysis tools</p></div>
+                <div class="feature-item"><p>Provide framework</p></div>
+            </div>
+
+            <h3>Types:</h3>
+            <div class="method-card"><h3>1️⃣ Descriptive</h3><p>Single variable description.</p></div>
+            <div class="method-card"><h3>2️⃣ Relational</h3><p>Relationship between variables.</p></div>
+            <div class="method-card"><h3>3️⃣ Directional / Non-Directional</h3></div>
+            <div class="method-card"><h3>4️⃣ Null (H0) & Alternative (H1)</h3></div>
+        </div>
+
+    </div><!-- container -->
+
+</body>
+</html>
