@@ -3,270 +3,1161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 2 – Literature Searching & Theoretical Framework</title>
-
+    <title>Research Unit 2 - Simplified Learning</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-            color:#222; overflow-x:hidden;
-        }
-        .header{
-            background:rgba(255,255,255,0.96);
-            padding:2rem;text-align:center;
-            box-shadow:0 4px 20px rgba(0,0,0,0.15);
-            position:sticky;top:0;z-index:100;
-        }
-        .header h1{
-            color:#667eea;
-            font-size:2.3rem;
-            animation:slideDown .8s ease;
-        }
-        .header p{color:#666}
-
-        @keyframes slideDown{from{opacity:0;transform:translateY(-25px)}to{opacity:1;transform:translateY(0)}}
-
-        .container{max-width:1400px;margin:0 auto;padding:2rem}
-
-        .card{
-            background:white;border-radius:22px;padding:1.8rem;
-            margin-bottom:2rem;box-shadow:0 8px 30px rgba(0,0,0,0.15);
-            transition:all .3s ease;
-        }
-        .card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
-
-        .card-title{
-            font-size:1.9rem;color:#667eea;margin-bottom:1.2rem;
-            display:flex;align-items:center;gap:1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
         }
 
-        .definition-box{
-            background:linear-gradient(135deg,#667eea15 0%,#764ba215 100%);
-            padding:1.2rem;border-left:6px solid #667eea;
-            border-radius:15px;margin:1rem 0;
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .method-card{
-            background:linear-gradient(135deg,#667eea10 0%,#764ba210 100%);
-            padding:1.3rem;border-radius:15px;margin:1rem 0;
-            border:2px solid #667eea30;
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: slideDown 0.8s ease;
         }
 
-        .feature-grid{
-            display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:1.5rem;margin:1.5rem 0;
-        }
-        .feature-item{
-            background:linear-gradient(135deg,#f093fb10 0%,#f5576c10 100%);
-            padding:1.2rem;border-radius:15px;text-align:center;
-            border:2px solid transparent;transition:all .3s ease;
-        }
-        .feature-item:hover{transform:scale(1.05);border-color:#f5576c}
-
-        .feature-number{
-            display:inline-block;width:50px;height:50px;border-radius:50%;
-            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-            color:white;line-height:50px;margin-bottom:1rem;font-weight:bold;
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
         }
 
-        .process-flow{display:flex;flex-direction:column;gap:1rem}
-        .process-step{
-            background:#fff;border-left:6px solid #667eea;padding:1.2rem;
-            border-radius:15px;display:flex;gap:1rem;align-items:center;
-        }
-        .step-number{
-            width:55px;height:55px;border-radius:50%;
-            background:linear-gradient(135deg,#667eea,#764ba2);
-            display:flex;justify-content:center;align-items:center;
-            font-size:1.4rem;color:white;font-weight:bold;
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav-pills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-pill {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-pill.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin: 1rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-item:hover {
+            border-color: #f5576c;
+            transform: scale(1.05);
+        }
+
+        .feature-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+
+        .comparison-table tr:hover td {
+            background: #f8f9ff;
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            min-width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .method-card {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            border: 2px solid #667eea30;
+        }
+
+        .method-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+        }
+
+        .strength-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .strength-item {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .strength-item:hover {
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            font-size: 2rem;
+        }
+
+        .concept-box {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .concept-icon {
+            font-size: 3rem;
+            min-width: 80px;
+        }
+
+        .concept-text {
+            flex: 1;
+        }
+
+        .concept-text h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .visual-signal {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .signal-1 { background: #ff7675; color: white; }
+        .signal-2 { background: #74b9ff; color: white; }
+        .signal-3 { background: #55efc4; color: white; }
+        .signal-4 { background: #a29bfe; color: white; }
+        .signal-5 { background: #ffeaa7; color: #2d3436; }
+        .signal-6 { background: #fd79a8; color: white; }
+        .signal-7 { background: #81ecec; color: #2d3436; }
+        .signal-8 { background: #fab1a0; color: #2d3436; }
+
+        .simple-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .simple-point:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .point-icon {
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+
+        .point-content {
+            flex: 1;
+        }
+
+        .point-content h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-pills {
+                flex-direction: column;
+            }
+            
+            .concept-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
 </head>
-
 <body>
-
     <div class="header">
-        <h1>📘 Unit 2: Literature Searching & Theoretical Framework</h1>
-        <p>Aastha College – Business Research Management</p>
+        <h1>Unit 2: Literature Searching & Theoretical Framework</h1>
+        
     </div>
 
     <div class="container">
+        <div class="nav-pills">
+            <button class="nav-pill active" onclick="showSection('literature')">📚 Literature Review</button>
+            <button class="nav-pill" onclick="showSection('theoretical')">🏗️ Theoretical Framework</button>
+            <button class="nav-pill" onclick="showSection('research-problem')">❓ Research Problem</button>
+            <button class="nav-pill" onclick="showSection('hypothesis')">🔍 Hypothesis</button>
+            <button class="nav-pill" onclick="showSection('reasoning')">🧠 Reasoning Approaches</button>
+        </div>
 
-        <!-- INTRO -->
-        <div class="card">
-            <h2 class="card-title">📚 Concept of Literature Review</h2>
-            <p>Research becomes strong only through continuous study, review of past works, books, journals, dissertations and reports related to the topic.</p>
+        <!-- LITERATURE REVIEW SECTION -->
+        <div id="literature" class="section active">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📚</span>Literature Review</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">🔍</div>
+                    <div class="concept-text">
+                        <h3>What is Literature Review?</h3>
+                        <p>It's a summary and analysis of existing knowledge on your research topic to build a foundation for your own study.</p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="definition-box">
-                <h3>Definition Highlights</h3>
-                <p><strong>Walliman:</strong> “A summary and analysis of current knowledge about a topic.”</p>
-                <p><strong>Ganter & Cardesco:</strong> “A self-contained unit that critically analyzes prior studies.”</p>
-                <p><strong>General:</strong> Summary of published or unpublished studies for researcher’s use.</p>
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📖</span>Expert Definitions</h2>
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-1">1</span> Walliman</h3>
+                    <p>"A literature review is a summary and analysis of the current knowledge about a particular topic or area of inquiry."</p>
+                </div>
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-2">2</span> Ganter & Cardesco</h3>
+                    <p>"A literature review is a self-contained unit in a study which analyses critically a segment of published body of a knowledge through summary, classification and comparison of prior research study and theoretical articles."</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🎯</span>Why Study Literature? (Simplified)</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">🕵️</div>
+                        <h3>Find Research Gaps</h3>
+                        <p>Discover what hasn't been studied yet</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🧩</div>
+                        <h3>Understand Phenomena</h3>
+                        <p>Develop explanations for what you're studying</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔄</div>
+                        <h3>Explore Alternatives</h3>
+                        <p>Find different research approaches</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📊</div>
+                        <h3>Learn Methods</h3>
+                        <p>See how others conducted similar research</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">⚠️</div>
+                        <h3>Avoid Past Mistakes</h3>
+                        <p>Learn from issues in previous studies</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📈</div>
+                        <h3>Find Data Sources</h3>
+                        <p>Discover where to get your information</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔗</div>
+                        <h3>Identify Relationships</h3>
+                        <p>Find connections between variables</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🏗️</div>
+                        <h3>Build Foundation</h3>
+                        <p>Create base knowledge for your research</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">💡</span>Literature Review Purposes (Simple)</h2>
+                
+                <div class="simple-point">
+                    <div class="point-icon">🎯</div>
+                    <div class="point-content">
+                        <h4>Avoid Repeating Research</h4>
+                        <p>Don't study what's already been done - find new areas to explore</p>
+                    </div>
+                </div>
+                
+                <div class="simple-point">
+                    <div class="point-icon">🕳️</div>
+                    <div class="point-content">
+                        <h4>Find Knowledge Gaps</h4>
+                        <p>Identify untouched areas or contradictions in existing research</p>
+                    </div>
+                </div>
+                
+                <div class="simple-point">
+                    <div class="point-icon">📐</div>
+                    <div class="point-content">
+                        <h4>Plan Your Research</h4>
+                        <p>Decide what variables, tools, and methods to use</p>
+                    </div>
+                </div>
+                
+                <div class="simple-point">
+                    <div class="point-icon">🏗️</div>
+                    <div class="point-content">
+                        <h4>Build Theoretical Framework</h4>
+                        <p>Create foundation for your research hypothesis</p>
+                    </div>
+                </div>
+                
+                <div class="simple-point">
+                    <div class="point-icon">📊</div>
+                    <div class="point-content">
+                        <h4>Choose Analysis Methods</h4>
+                        <p>Select appropriate tools for your data type</p>
+                    </div>
+                </div>
+                
+                <div class="simple-point">
+                    <div class="point-icon">🔄</div>
+                    <div class="point-content">
+                        <h4>Stay Current</h4>
+                        <p>Keep up with latest developments in your field</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🌐</span>Finding Literature Online</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">💻</div>
+                    <div class="concept-text">
+                        <h3>Internet Makes Research Easier</h3>
+                        <p>Search engines and online libraries give you instant access to thousands of research papers and articles</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Top Search Tools:</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="emoji">🔍</div>
+                            <h3>Google Scholar</h3>
+                            <p>Free academic search engine</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">📚</div>
+                            <h3>University Libraries</h3>
+                            <p>Access to paid journals</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">🌐</div>
+                            <h3>Research Databases</h3>
+                            <p>Specialized academic sources</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">📄</div>
+                            <h3>Online Journals</h3>
+                            <p>Direct publisher access</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔄</span>How Literature Helps Research</h2>
+                
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h3>Understand Concepts</h3>
+                            <p>Learn historical and modern ideas about your topic</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h3>Choose Your Topic</h3>
+                            <p>Select research area by finding knowledge gaps</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h3>Identify Variables</h3>
+                            <p>Find what factors to measure in your study</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h3>Build Framework</h3>
+                            <p>Create relationships between your variables</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div>
+                            <h3>Design Research</h3>
+                            <p>Plan how you'll conduct your study</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">6</div>
+                        <div>
+                            <h3>Collect Data</h3>
+                            <p>Choose right methods to gather information</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">7</div>
+                        <div>
+                            <h3>Analyze Results</h3>
+                            <p>Select proper tools to examine your data</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- REASONS -->
-        <div class="card">
-            <h2 class="card-title">🎯 Why Study Literature Review?</h2>
+        <!-- THEORETICAL FRAMEWORK SECTION -->
+        <div id="theoretical" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🏗️</span>Theoretical Framework</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">📐</div>
+                    <div class="concept-text">
+                        <h3>What is a Theoretical Framework?</h3>
+                        <p>A conceptual model showing relationships between factors in your research - it connects your variables and helps develop hypotheses.</p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="feature-grid">
-                <div class="feature-item"><div class="feature-number">1</div><p>Identify what has or hasn’t been investigated.</p></div>
-                <div class="feature-item"><div class="feature-number">2</div><p>Develop explanation for phenomena.</p></div>
-                <div class="feature-item"><div class="feature-number">3</div><p>Find alternative research ideas.</p></div>
-                <div class="feature-item"><div class="feature-number">4</div><p>Identify methodology used.</p></div>
-                <div class="feature-item"><div class="feature-number">5</div><p>Identify issues in earlier research.</p></div>
-                <div class="feature-item"><div class="feature-number">6</div><p>Find data sources.</p></div>
-                <div class="feature-item"><div class="feature-number">7</div><p>Identify variables & hypothesis.</p></div>
-                <div class="feature-item"><div class="feature-number">8</div><p>Build foundation for research work.</p></div>
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🎯</span>Why You Need a Theoretical Framework</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">📋</div>
+                        <h3>Organizes Data Collection</h3>
+                        <p>Provides structure for gathering information</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📊</div>
+                        <h3>Guides Data Analysis</h3>
+                        <p>Creates framework for examining results</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎯</div>
+                        <h3>Identifies Key Variables</h3>
+                        <p>Helps determine what to study</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔍</div>
+                        <h3>Interprets Findings</h3>
+                        <p>Helps make sense of your results</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔗</div>
+                        <h3>Connects Theory & Practice</h3>
+                        <p>Links academic concepts to real problems</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">💡</div>
+                        <h3>Clarifies Research Problem</h3>
+                        <p>Makes your study focus clearer</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📝</div>
+                        <h3>Strengthens Proposal</h3>
+                        <p>Makes your research plan more convincing</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔄</div>
+                        <h3>Links to Previous Studies</h3>
+                        <p>Shows how your work builds on others</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔗</span>Theory & Research Relationship</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">🔄</div>
+                    <div class="concept-text">
+                        <h3>Theory and Research Work Together</h3>
+                        <p>Theory guides research approaches, while research tests and improves theories - they support each other in a continuous cycle.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>How They Connect:</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="emoji">🧪</div>
+                            <h3>Research Tests Theory</h3>
+                            <p>Studies verify if theories work in real situations</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">💡</div>
+                            <h3>Research Improves Theory</h3>
+                            <p>Findings help refine existing theories</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="emoji">🌟</div>
+                            <h3>Research Creates Theory</h3>
+                            <p>New discoveries lead to new theories</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- PURPOSES -->
-        <div class="card">
-            <h2 class="card-title">🌟 Purposes of Literature Review</h2>
+        <!-- RESEARCH PROBLEM SECTION -->
+        <div id="research-problem" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">❓</span>Research Problem</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">🎯</div>
+                    <div class="concept-text">
+                        <h3>What is a Research Problem?</h3>
+                        <p>A clear statement about an area of concern, a condition to be improved, or a difficulty to be eliminated that points to the need for meaningful understanding and deliberate investigation.</p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="method-card"><h3>1️⃣ Know Existing Research</h3><p>Prevents duplication and identifies untouched issues.</p></div>
-            <div class="method-card"><h3>2️⃣ Identify Research Gap</h3><p>Find contradictions or unexplored areas.</p></div>
-            <div class="method-card"><h3>3️⃣ Develop Research Design</h3><p>Select variables, tools, techniques, procedures.</p></div>
-            <div class="method-card"><h3>4️⃣ Build Theoretical Framework</h3><p>Supports hypothesis development and empirical analysis.</p></div>
-            <div class="method-card"><h3>5️⃣ Learn Data Analysis Methods</h3><p>Choose appropriate analytical tools.</p></div>
-            <div class="method-card"><h3>6️⃣ Select Research Design Type</h3><p>Decide qualitative, quantitative or mixed design.</p></div>
-            <div class="method-card"><h3>7️⃣ Update Current Issues</h3><p>Keep research aligned with new developments.</p></div>
-        </div>
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔍</span>Finding Your Research Problem</h2>
+                
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-1">1</span> Management Problem</h3>
+                    <p><strong>Simple Explanation:</strong> A real-world issue that organizations face and need solutions for.</p>
+                    <div class="highlight-box">
+                        <h4>Example: CG TV Sales Problem</h4>
+                        <p>Company noticed TV sales were dropping despite advertising - management needed to figure out why and fix it.</p>
+                    </div>
+                </div>
+                
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-2">2</span> Research Problem</h3>
+                    <p><strong>Simple Explanation:</strong> Turning the management problem into a specific question that research can answer.</p>
+                    <div class="highlight-box">
+                        <h4>Example Research Question:</h4>
+                        <p>"Does the new TV advertisement actually increase sales?"</p>
+                    </div>
+                </div>
+                
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-3">3</span> Research Questions</h3>
+                    <p><strong>Simple Explanation:</strong> Breaking the main research problem into smaller, specific questions.</p>
+                    <div class="highlight-box">
+                        <h4>Example Smaller Questions:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>Can staff training improve sales?</li>
+                            <li>Should we change the advertisement?</li>
+                            <li>Would better product quality help?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <!-- TIPS -->
-        <div class="card">
-            <h2 class="card-title">📝 Tips for Writing a Good Literature Review</h2>
-
-            <div class="feature-grid">
-                <div class="feature-item"><p>Arrange notes in logical order.</p></div>
-                <div class="feature-item"><p>Identify major themes.</p></div>
-                <div class="feature-item"><p>Sort articles under headings.</p></div>
-                <div class="feature-item"><p>Organize topic & subtopics clearly.</p></div>
-                <div class="feature-item"><p>Avoid long, confusing paragraphs.</p></div>
-                <div class="feature-item"><p>Rewrite, rearrange, refine.</p></div>
-                <div class="feature-item"><p>Draft → Review → Improve.</p></div>
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🚗</span>Real Example: Mustang Jeep</h2>
+                
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h3>Management Problem</h3>
+                            <p>Low market share - not selling enough Jeeps</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h3>Research Problem</h3>
+                            <p>Can changing the Jeep's body and features help?</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h3>Research Question</h3>
+                            <p>Will better design increase Jeep sales?</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h3>Hypothesis</h3>
+                            <p>Improved design leads to higher Mustang Jeep sales</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- INTERNET SEARCH -->
-        <div class="card">
-            <h2 class="card-title">🌐 Literature Search Through Internet</h2>
-            <p>Internet makes research easier using search engines and e-libraries.</p>
+        <!-- HYPOTHESIS SECTION -->
+        <div id="hypothesis" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔍</span>Hypothesis</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">💡</div>
+                    <div class="concept-text">
+                        <h3>What is a Hypothesis?</h3>
+                        <p>An educated guess about the relationship between variables that can be tested through research.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Example Hypothesis:</h3>
+                    <p>"People with more education participate more in politics."</p>
+                </div>
+            </div>
 
-            <div class="feature-grid">
-                <div class="feature-item"><p><strong>Google</strong>: www.google.com</p></div>
-                <div class="feature-item"><p><strong>Yahoo</strong>: www.yahoo.com</p></div>
-                <div class="feature-item"><p><strong>Go</strong>: www.go.com</p></div>
-                <div class="feature-item"><p><strong>HotBot</strong>: www.hotbot.com</p></div>
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🎯</span>Why Hypotheses Matter</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">🎯</div>
+                        <h3>Focus Your Research</h3>
+                        <p>Helps select relevant facts and data</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🧭</div>
+                        <h3>Guide Your Direction</h3>
+                        <p>Shows what path your research should take</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📊</div>
+                        <h3>Determine Data Needs</h3>
+                        <p>Shows what information to collect</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔍</div>
+                        <h3>Test Theories</h3>
+                        <p>Helps confirm or challenge existing knowledge</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🛠️</div>
+                        <h3>Choose Analysis Tools</h3>
+                        <p>Suggests how to examine your data</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🏗️</div>
+                        <h3>Provide Structure</h3>
+                        <p>Creates organized approach to your study</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🌉</div>
+                        <h3>Connect Theory & Practice</h3>
+                        <p>Links academic concepts to real testing</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔄</span>Creating Hypotheses</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">💭</div>
+                    <div class="concept-text">
+                        <h3>Where Do Hypotheses Come From?</h3>
+                        <p>You can develop hypotheses by observing society, studying existing research, talking to experts, or examining data.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Hypothesis Development Process:</h3>
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h3>Observation</h3>
+                                <p>Notice something interesting in the world</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h3>Hypothesis</h3>
+                                <p>Make an educated guess about why it happens</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h3>Theory</h3>
+                                <p>Develop explanation if hypothesis is proven</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📋</span>Types of Hypotheses</h2>
+                
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-1">1</span> Descriptive Hypothesis</h3>
+                    <p><strong>Simple Explanation:</strong> Describes characteristics of a single variable.</p>
+                    <div class="highlight-box">
+                        <h4>Examples:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>NABIL Bank shareholders prefer bonus dividends</li>
+                            <li>Dharan-Dhankutta highway has high accident rates</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-2">2</span> Relational Hypothesis</h3>
+                    <p><strong>Simple Explanation:</strong> Shows how two or more variables are connected.</p>
+                    <div class="highlight-box">
+                        <h4>Examples:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>Higher income families spend more on recreation</li>
+                            <li>More education increases political participation</li>
+                            <li>Income growth expands product markets</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-3">3</span> Directional vs Non-directional</h3>
+                    <p><strong>Directional:</strong> Predicts specific direction of relationship</p>
+                    <p><strong>Non-directional:</strong> Just says relationship exists without specifying direction</p>
+                    <div class="highlight-box">
+                        <h4>Directional Examples:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>Younger workers are less motivated than older workers</li>
+                            <li>More workload means less job satisfaction</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <h4>Non-directional Examples:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>Nepalese and Chinese work cultures differ</li>
+                            <li>Education doesn't affect work commitment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3><span class="visual-signal signal-4">4</span> Null vs Alternative</h3>
+                    <p><strong>Null (H₀):</strong> Says "no relationship" between variables</p>
+                    <p><strong>Alternative (H₁):</strong> Says "relationship exists" between variables</p>
+                    <div class="highlight-box">
+                        <h4>Null Hypothesis Examples:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>Training doesn't affect productivity</li>
+                            <li>No gender difference in office work performance</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <h4>Alternative Hypothesis Examples:</h4>
+                        <ul style="margin-left: 1.5rem; line-height: 2;">
+                            <li>Training improves productivity</li>
+                            <li>Gender affects performance under pressure</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- RELATION -->
-        <div class="card">
-            <h2 class="card-title">🔗 Relation of Literature to Research</h2>
-            <div class="method-card"><h3>1️⃣ Know Concepts</h3><p>Helps understand historical, modern, and scientific context.</p></div>
-            <div class="method-card"><h3>2️⃣ Select Topic</h3><p>Gap between old and new research guides topic selection.</p></div>
-            <div class="method-card"><h3>3️⃣ Identify Variables</h3><p>Previous studies reveal measurable domains.</p></div>
-            <div class="method-card"><h3>4️⃣ Build Conceptual Framework</h3></div>
-            <div class="method-card"><h3>5️⃣ Decide Research Design</h3></div>
-            <div class="method-card"><h3>6️⃣ Select Data Collection Tools</h3></div>
-            <div class="method-card"><h3>7️⃣ Select Data Analysis Tools</h3></div>
+        <!-- REASONING APPROACHES SECTION -->
+        <div id="reasoning" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🧠</span>Research Reasoning Approaches</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">🔄</div>
+                    <div class="concept-text">
+                        <h3>Two Ways to Think About Research</h3>
+                        <p>Deductive reasoning starts with general theories and tests them, while inductive reasoning starts with specific observations and builds theories.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⬇️</span>Deductive Reasoning</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">🔍</div>
+                    <div class="concept-text">
+                        <h3>Top-Down Approach</h3>
+                        <p>Start with a general theory, develop specific hypothesis, collect data to test it, and draw conclusions about the theory.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Deductive Process:</h3>
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h3>Start with Theory</h3>
+                                <p>Begin with existing general knowledge</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h3>Make Prediction</h3>
+                                <p>Create specific hypothesis from theory</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h3>Test with Data</h3>
+                                <p>Collect information to check hypothesis</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div>
+                                <h3>Draw Conclusion</h3>
+                                <p>Confirm, modify, or reject original theory</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⬆️</span>Inductive Reasoning</h2>
+                
+                <div class="concept-box">
+                    <div class="concept-icon">💡</div>
+                    <div class="concept-text">
+                        <h3>Bottom-Up Approach</h3>
+                        <p>Start with specific observations, identify patterns, develop hypothesis, and create new general theories.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Inductive Process:</h3>
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h3>Make Observations</h3>
+                                <p>Collect specific examples and data</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h3>Find Patterns</h3>
+                                <p>Look for trends in your observations</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h3>Develop Hypothesis</h3>
+                                <p>Create explanation for the patterns</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div>
+                                <h3>Build Theory</h3>
+                                <p>Form general principles from findings</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⚖️</span>Comparing Both Approaches</h2>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Deductive Reasoning</th>
+                        <th>Inductive Reasoning</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Direction</strong></td>
+                        <td>General → Specific</td>
+                        <td>Specific → General</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Starting Point</strong></td>
+                        <td>Existing theory</td>
+                        <td>Specific observations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Process</strong></td>
+                        <td>Testing hypotheses</td>
+                        <td>Finding patterns</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Outcome</strong></td>
+                        <td>Confirms/changes theory</td>
+                        <td>Creates new theory</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Research Type</strong></td>
+                        <td>Usually quantitative</td>
+                        <td>Usually qualitative</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best For</strong></td>
+                        <td>Testing established ideas</td>
+                        <td>Exploring new phenomena</td>
+                    </tr>
+                </table>
+            </div>
         </div>
+    </div>
 
-        <!-- THEORETICAL FRAMEWORK -->
-        <div class="card">
-            <h2 class="card-title">🏛️ Theoretical Framework</h2>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
 
-            <div class="definition-box">
-                <p>A conceptual model showing relationships among factors related to the problem.</p>
-                <p>Developed after literature review + field information.</p>
-            </div>
+            // Remove active class from all pills
+            const pills = document.querySelectorAll('.nav-pill');
+            pills.forEach(pill => {
+                pill.classList.remove('active');
+            });
 
-            <div class="feature-grid">
-                <div class="feature-item"><div class="feature-number">1</div><p>Frame for data collection.</p></div>
-                <div class="feature-item"><div class="feature-number">2</div><p>Base for data analysis.</p></div>
-                <div class="feature-item"><div class="feature-number">3</div><p>Identifies variables.</p></div>
-                <div class="feature-item"><div class="feature-number">4</div><p>Helps interpret results.</p></div>
-                <div class="feature-item"><div class="feature-number">5</div><p>Relates theory & problem.</p></div>
-            </div>
-        </div>
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
 
-        <!-- THEORY & RESEARCH -->
-        <div class="card">
-            <h2 class="card-title">🔬 Theory & Research Relationship</h2>
-            <p>Theory guides research; research verifies, improves, or creates theory.</p>
+            // Add active class to clicked pill
+            event.target.classList.add('active');
 
-            <div class="feature-grid">
-                <div class="feature-item"><p>Concepts</p></div>
-                <div class="feature-item"><p>Variables</p></div>
-                <div class="feature-item"><p>Propositions</p></div>
-                <div class="feature-item"><p>Models</p></div>
-                <div class="feature-item"><p>Hypothesis</p></div>
-            </div>
-        </div>
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-        <!-- APPROACHES -->
-        <div class="card">
-            <h2 class="card-title">🧠 Research Approaches</h2>
+        // Add smooth scroll animation on load
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
 
-            <div class="method-card">
-                <h3>Deductive Approach 🔽</h3>
-                <p>Top → Down (Theory → Hypothesis → Observation → Conclusion)</p>
-            </div>
-
-            <div class="method-card">
-                <h3>Inductive Approach 🔼</h3>
-                <p>Bottom → Up (Observation → Pattern → Hypothesis → Theory)</p>
-            </div>
-        </div>
-
-        <!-- RESEARCH PROBLEM -->
-        <div class="card">
-            <h2 class="card-title">❓ Research Problem</h2>
-
-            <div class="definition-box">
-                <p><strong>Selkaran:</strong> Gap between actual & ideal condition.</p>
-                <p><strong>Kerlinger:</strong> Relation between two or more variables.</p>
-            </div>
-
-            <h3 style="margin-top:1rem;">Identification Steps:</h3>
-
-            <div class="process-flow">
-                <div class="process-step"><div class="step-number">1</div><p>Management Problem</p></div>
-                <div class="process-step"><div class="step-number">2</div><p>Translate to Research Problem</p></div>
-                <div class="process-step"><div class="step-number">3</div><p>Research Questions</p></div>
-            </div>
-        </div>
-
-        <!-- HYPOTHESIS -->
-        <div class="card">
-            <h2 class="card-title">📌 Hypothesis</h2>
-
-            <div class="definition-box">
-                <p>“A logical, testable statement showing expected relationship between variables.”</p>
-            </div>
-
-            <h3>Role of Hypothesis:</h3>
-            <div class="feature-grid">
-                <div class="feature-item"><p>Select facts</p></div>
-                <div class="feature-item"><p>Guide research direction</p></div>
-                <div class="feature-item"><p>Determine data needed</p></div>
-                <div class="feature-item"><p>Select / reject theories</p></div>
-                <div class="feature-item"><p>Suggest analysis tools</p></div>
-                <div class="feature-item"><p>Provide framework</p></div>
-            </div>
-
-            <h3>Types:</h3>
-            <div class="method-card"><h3>1️⃣ Descriptive</h3><p>Single variable description.</p></div>
-            <div class="method-card"><h3>2️⃣ Relational</h3><p>Relationship between variables.</p></div>
-            <div class="method-card"><h3>3️⃣ Directional / Non-Directional</h3></div>
-            <div class="method-card"><h3>4️⃣ Null (H0) & Alternative (H1)</h3></div>
-        </div>
-
-    </div><!-- container -->
-
+        // Add hover effect to cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
