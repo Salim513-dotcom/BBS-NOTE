@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Unit 6 - Topic Selection & Report Writing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav-pills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-pill {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-pill.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin: 1rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-item:hover {
+            border-color: #f5576c;
+            transform: scale(1.05);
+        }
+
+        .feature-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+
+        .comparison-table tr:hover td {
+            background: #f8f9ff;
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .process-step {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .process-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .method-card {
+            background: linear-gradient(135deg, #f093fb10 0%, #f5576c10 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            border: 2px solid #f5576c30;
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            border-color: #f5576c;
+            transform: scale(1.02);
+        }
+
+        .method-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .strength-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .strength-item {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .strength-item:hover {
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            transform: translateX(5px);
+        }
+
+        .list-item {
+            background: linear-gradient(135deg, #667eea08 0%, #764ba208 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 0.5rem 0;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .list-item:hover {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            transform: translateX(5px);
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #f093fb08 0%, #f5576c08 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 0.5rem 0;
+            border-left: 3px solid #f5576c;
+            font-style: italic;
+        }
+
+        h3 {
+            color: #667eea;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #f093fb20 0%, #f5576c20 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Unit 6</h1>
+        <p>Research Proposal & Report Writing</p>
+    </div>
+
+    <div class="container">
+        <div class="nav-pills">
+            <button class="nav-pill active" onclick="showSection('topic-selection')">Topic Selection</button>
+            <button class="nav-pill" onclick="showSection('research-proposal')">Research Proposal</button>
+            <button class="nav-pill" onclick="showSection('proposal-types')">Types of Proposals</button>
+            <button class="nav-pill" onclick="showSection('proposal-structure')">Proposal Structure</button>
+            <button class="nav-pill" onclick="showSection('research-report')">Research Report</button>
+            <button class="nav-pill" onclick="showSection('report-structure')">Report Structure</button>
+        </div>
+
+        <!-- Topic Selection Section -->
+        <div id="topic-selection" class="section active">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🎯</span>Topic Selection</h2>
+                
+                <div class="definition-box">
+                    <h3>What is a Research Topic?</h3>
+                    <p>A subject chosen for the research is called a <span class="highlight">research topic</span>. Its concentration is for the event, activity or theory. Selection of the topic is important work and it should be chosen to meet the aim of the research.</p>
+                </div>
+
+                <h3>Why Select a Topic?</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">🔍</div>
+                        <h4>Fill Research Gap</h4>
+                        <p>Address unanswered questions in the field</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎯</div>
+                        <h4>Recover the Aim</h4>
+                        <p>Achieve specific research objectives</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">😊</div>
+                        <h4>Personal Satisfaction</h4>
+                        <p>Pursue areas of interest</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">💡</div>
+                        <h4>Innovation</h4>
+                        <p>Bring new ideas and solutions</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📢</div>
+                        <h4>Awareness</h4>
+                        <p>Make people aware of important issues</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📋</span>Factors for Topic Selection</h2>
+                
+                <div class="process-flow">
+                    <div class="process-step" data-step="1">
+                        <h3>Brain Storming for Ideas</h3>
+                        <p>Generate and explore multiple potential topics through creative thinking sessions</p>
+                    </div>
+                    <div class="process-step" data-step="2">
+                        <h3>Read General Background Information</h3>
+                        <p>Familiarize yourself with the broader context of your area of interest</p>
+                    </div>
+                    <div class="process-step" data-step="3">
+                        <h3>Focus on Manageable Topic</h3>
+                        <p>Ensure the topic is neither too broad nor too narrow for your resources</p>
+                    </div>
+                    <div class="process-step" data-step="4">
+                        <h3>Make a List of Useful Keywords</h3>
+                        <p>Identify key terms that will help in literature search and refinement</p>
+                    </div>
+                    <div class="process-step" data-step="5">
+                        <h3>Be Flexible to Choose Topic</h3>
+                        <p>Remain open to modifying your topic as you learn more</p>
+                    </div>
+                    <div class="process-step" data-step="6">
+                        <h3>Define as Focused Research Questions</h3>
+                        <p>Transform your topic into specific, answerable questions</p>
+                    </div>
+                    <div class="process-step" data-step="7">
+                        <h3>Do More Research on Requirements</h3>
+                        <p>Investigate what resources and methodology you'll need</p>
+                    </div>
+                    <div class="process-step" data-step="8">
+                        <h3>Read More in Different Media</h3>
+                        <p>Explore books, journals, online sources, and other materials</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Proposal Section -->
+        <div id="research-proposal" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📝</span>Research Proposal</h2>
+                
+                <div class="definition-box">
+                    <p>A research proposal is a presentation of the idea in which the report or thesis is made. It is a <span class="highlight">road map</span> of making report or thesis from beginning to end including the location and ideas. It is a research plan showing the path of data collection, analysis and interpretation.</p>
+                    <br>
+                    <p>It is a written document explaining what is done, how it is done, and what will be obtained from the study.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🎯</span>Purposes of Research Proposal</h2>
+                
+                <div class="list-item">
+                    <strong>✓</strong> To provide the proper context to frame the research question
+                </div>
+                <div class="list-item">
+                    <strong>✓</strong> To spell out clearly the research issues and objectives
+                </div>
+                <div class="list-item">
+                    <strong>✓</strong> To delimit the boundary for the proposed research and predict challenges
+                </div>
+                <div class="list-item">
+                    <strong>✓</strong> To define research strategy and methods of selecting sample, instrument, data collection and analysis
+                </div>
+                <div class="list-item">
+                    <strong>✓</strong> To cite landmark studies relevant to the topic
+                </div>
+                <div class="list-item">
+                    <strong>✓</strong> To develop a coherent and proper argument
+                </div>
+                <div class="list-item">
+                    <strong>✓</strong> To inform research methodologies
+                </div>
+                <div class="list-item">
+                    <strong>✓</strong> To provide references
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⚙️</span>Functions of Research Proposal</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">💬</div>
+                        <h4>Communication</h4>
+                        <p>Make communication between researcher and fund manager or approver</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📖</div>
+                        <h4>Procedures</h4>
+                        <p>Make known about the procedures of the study</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🤝</div>
+                        <h4>Contract</h4>
+                        <p>Make a contract among researcher, supervisor, funder, institution</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">✅</div>
+                        <h4>Agreement</h4>
+                        <p>Finalize the agreement not to change it again</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🚀</div>
+                        <h4>First Step</h4>
+                        <p>Pass a first but important step of the research</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proposal Types Section -->
+        <div id="proposal-types" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📂</span>Types of Research Proposals</h2>
+                
+                <div class="method-card">
+                    <h3>1️⃣ Solicited Proposal</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">📧</div>
+                    <p>A proposal is called <span class="highlight">solicited</span> if it is prepared on the request of the sponsoring organization.</p>
+                    
+                    <div style="margin-top: 1rem;">
+                        <strong>Key Characteristics:</strong>
+                        <ul>
+                            <li>Concentrates to solve a particular problem</li>
+                            <li>Gives the description of the problem</li>
+                            <li>Needs the qualification of the researcher</li>
+                            <li>May give the time limit</li>
+                            <li>Gives the required budget</li>
+                            <li>May give limit of TOR (Term of Reference)</li>
+                            <li>Normally given to the professionals of the research</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3>2️⃣ Unsolicited Proposal</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">💡</div>
+                    <p>A proposal is called <span class="highlight">unsolicited</span> if it is prepared by the researcher not on the request of any sponsoring organization but may be presented to any sponsor or organization for obtaining fund later on.</p>
+                    
+                    <div style="margin-top: 1rem;">
+                        <strong>Key Characteristics:</strong>
+                        <ul>
+                            <li>Must be innovative and unique</li>
+                            <li>Developed by the free offeror</li>
+                            <li>Not made under any suggestion, supervision or involvement of superior agency</li>
+                            <li>May be kept in comparison if many are there</li>
+                            <li>Made in advance and use is searched later on</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h3>3️⃣ Academic Proposal</h3>
+                    <div class="emoji" style="font-size: 2.5rem;">🎓</div>
+                    <p>A proposal is called <span class="highlight">academic</span> if it is done to complete the academic qualification of the higher level of the universities.</p>
+                    
+                    <div style="margin-top: 1rem;">
+                        <strong>Examples:</strong>
+                        <div class="example-box">Report Writing for BBS/BBA/BBM etc.</div>
+                        <div class="example-box">Thesis for MBS/M.Sc./M.Ed./M.A.</div>
+                        <div class="example-box">Thesis for M. Phil.</div>
+                        <div class="example-box">Thesis for Ph. D.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proposal Structure Section -->
+        <div id="proposal-structure" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🏗️</span>Structure of Research Proposal</h2>
+                
+                <div class="definition-box">
+                    <p>Structure of the research depends on the nature of the research. Each and every proposal should follow a certain authentic design. According to the university it may differ and some structures may be pre-defined by any organization.</p>
+                </div>
+
+                <div class="process-flow">
+                    <div class="process-step" data-step="1">
+                        <h3>Title</h3>
+                        <p>Should be neither too short nor long but appropriate for the subject matter. Should not contain unnecessary words but sensible to reflect the gist.</p>
+                        <div style="margin-top: 0.5rem;">
+                            <div class="example-box">Example: Brand Loyalty of the Detergent Users in Nepal</div>
+                            <div class="example-box">Example: Effectiveness of VAT in Nepal</div>
+                        </div>
+                    </div>
+
+                    <div class="process-step" data-step="2">
+                        <h3>Background of the Study</h3>
+                        <p>Provides general information about the research title in brief. May give relevant literature, reference material, creation of interest in topic and rational of the proposal study.</p>
+                    </div>
+
+                    <div class="process-step" data-step="3">
+                        <h3>Statement of the Problem</h3>
+                        <p>Main focus of the study to solve a problem or resolution of the issue. Write clearly about the problem, show proper relationship between study and variable, and ensure problem is solvable.</p>
+                    </div>
+
+                    <div class="process-step" data-step="4">
+                        <h3>Theoretical Framework</h3>
+                        <p>Helps to develop background of the study. Shows relationship between study and variables. Should inform about: summary of literature, identification of variables, theory's presentation.</p>
+                    </div>
+
+                    <div class="process-step" data-step="5">
+                        <h3>Statement of the Hypothesis</h3>
+                        <p>A declarative statement showing relationship between variables. Must be declarative, measureable, and without ambiguity (vagueness).</p>
+                    </div>
+
+                    <div class="process-step" data-step="6">
+                        <h3>Definition of Terminologies</h3>
+                        <p>All technical terms are properly defined for understanding of all readers.</p>
+                    </div>
+
+                    <div class="process-step" data-step="7">
+                        <h3>Significance of the Study</h3>
+                        <p>Shows where the study is used, how it contributes, its relevance and benefits. Must create prospective to look at problem, show relationship to larger issues, and demonstrate benefits after completion.</p>
+                    </div>
+
+                    <div class="process-step" data-step="8">
+                        <h3>Limitation of the Study</h3>
+                        <p>Declares the area which is not attempted by researcher due to different reasons (time, cost, behavior of people, secondary data, quality constraints).</p>
+                    </div>
+
+                    <div class="process-step" data-step="9">
+                        <h3>Research Methodology</h3>
+                        <p>Contains: Research Design, Population and Sample, Instruments to be used, Data Collection Strategies, Analysis of the Data.</p>
+                    </div>
+
+                    <div class="process-step" data-step="10">
+                        <h3>References</h3>
+                        <p>List of literatures used in proposal writing, arranged in alphabetical order. Must follow APA format (American Psychology Association).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Report Section -->
+        <div id="research-report" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📄</span>Writing Research Report</h2>
+                
+                <div class="definition-box">
+                    <p>A description with the complete research work including a fulfilled objective under suitable procedure and proper result is called <span class="highlight">research report</span>.</p>
+                    <br>
+                    <p><strong>Thesis:</strong> A research report made by scholar or student to complete higher degree</p>
+                    <p><strong>Report:</strong> A research document made by researcher for non-academic purpose</p>
+                </div>
+
+                <h3>Essential Characteristics</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">📋</div>
+                        <h4>Proper Procedures</h4>
+                        <p>Should contain proper procedures</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔬</div>
+                        <h4>Scientific & Systematic</h4>
+                        <p>Well managed in proper way</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎯</div>
+                        <h4>Objective-Driven</h4>
+                        <p>Always done taking objectives</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">⚙️</div>
+                        <h4>Suitable Methodologies</h4>
+                        <p>Should follow suitable methods</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">🔄</span>Research Reporting Process</h2>
+                
+                <div class="process-flow">
+                    <div class="process-step" data-step="1">
+                        <h3>Analyze the Main Tasks</h3>
+                    </div>
+                    <div class="process-step" data-step="2">
+                        <h3>Arrange Subject Matter Logically/Chronologically</h3>
+                    </div>
+                    <div class="process-step" data-step="3">
+                        <h3>Prepare an Outline</h3>
+                    </div>
+                    <div class="process-step" data-step="4">
+                        <h3>Plan Your Time</h3>
+                    </div>
+                    <div class="process-step" data-step="5">
+                        <h3>Arrange Data</h3>
+                    </div>
+                    <div class="process-step" data-step="6">
+                        <h3>Start Writing</h3>
+                    </div>
+                    <div class="process-step" data-step="7">
+                        <h3>Prepare First Draft</h3>
+                        <p>Review it properly again and again seriously</p>
+                    </div>
+                    <div class="process-step" data-step="8">
+                        <h3>Leave the Report for Some Days</h3>
+                        <p>To find weaknesses with fresh perspective</p>
+                    </div>
+                    <div class="process-step" data-step="9">
+                        <h3>Review the Report</h3>
+                    </div>
+                    <div class="process-step" data-step="10">
+                        <h3>Prepare List of Bibliography</h3>
+                    </div>
+                    <div class="process-step" data-step="11">
+                        <h3>Rewrite the Final Report</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">✍️</span>Style of Report Writing</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="emoji">💎</div>
+                        <h4>Clarity</h4>
+                        <p>Clear and easy to understand writing</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎯</div>
+                        <h4>Objective-Based</h4>
+                        <p>Based on research objectives</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">📚</div>
+                        <h4>Terminology</h4>
+                        <p>Careful about terminologies</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">✅</div>
+                        <h4>Grammar & Spelling</h4>
+                        <p>Be careful about grammar and spelling</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🎨</div>
+                        <h4>Selective</h4>
+                        <p>Try to be selective in content</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🔬</div>
+                        <h4>Objective</h4>
+                        <p>Try to be objective in approach</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="emoji">🏁</div>
+                        <h4>Conclusion</h4>
+                        <p>Draw proper conclusion</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">💻</span>Typing and Layout Guidelines</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Specification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Paper Size</strong></td>
+                            <td>A4 size (8.6" × 11") - Photocopy Paper</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Margins</strong></td>
+                            <td>Top: 1.3", Bottom: 1", Left: 1.5", Right: 1"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spacing</strong></td>
+                            <td>Normal text: 1.5 spacing<br>Single spaced: Tables, Graphs, Charts, Quotations, Appendices, References</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Font</strong></td>
+                            <td>Times New Roman, Size 12 (Variable)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Page Numbers</strong></td>
+                            <td>Right bottom (APA or University may change)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pagination</strong></td>
+                            <td>Preliminary pages: Roman (i, ii, iii...)<br>Regular pages: Arabic (1, 2, 3...)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">⭐</span>Qualities of Good Research Report</h2>
+                
+                <div class="strength-list">
+                    <div class="strength-item">
+                        <div class="emoji">📝</div>
+                        <p>Language should be simple</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">👥</div>
+                        <p>Reader oriented explanation</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">✅</div>
+                        <p>Grammatically correct form</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">💎</div>
+                        <p>Clear language and facts</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">🎯</div>
+                        <p>Accuracy of facts managed</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">📏</div>
+                        <p>Short (concise) but fact-full</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">💼</div>
+                        <p>Precious and valuable</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">🔍</div>
+                        <p>Relevant and accurate</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">🎨</div>
+                        <p>Attractive to see</p>
+                    </div>
+                    <div class="strength-item">
+                        <div class="emoji">✏️</div>
+                        <p>Edited for language accuracy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Structure Section -->
+        <div id="report-structure" class="section">
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📑</span>Content of Research Report</h2>
+                
+                <div class="definition-box">
+                    <p>Research reports may not be similar everywhere. Formats, structure and subject matters vary from universities. Generally, reports contain three main parts:</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-number">1</div>
+                        <h3>Preliminary Part</h3>
+                        <p>Title Page, Recommendation Sheet, Viva-Voice Sheet, Acknowledgement, Executive Summary, Table of Content, List of Tables and Figures</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">2</div>
+                        <h3>Body of Report</h3>
+                        <p>Introduction, Review of Literature, Research Methodology, Data Presentation and Analysis, Summary and Conclusion</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">3</div>
+                        <h3>Supplementary Part</h3>
+                        <p>References & Bibliography, Appendix</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📋</span>A. Preliminary Part</h2>
+                
+                <div class="method-card">
+                    <h3>1. Title Page</h3>
+                    <p>The first and outermost page including:</p>
+                    <ul>
+                        <li>Title of the Research/Thesis</li>
+                        <li>Name of the Researcher</li>
+                        <li>Name of the institution whom the report is submitted to</li>
+                        <li>Degree for which the Report is submitted</li>
+                        <li>Name of the place submitted</li>
+                        <li>Date of submitting</li>
+                    </ul>
+                </div>
+
+                <div class="method-card">
+                    <h3>2. Recommendation Sheet</h3>
+                    <p>Contains signatures from Supervisor, Head of Research Department, and Campus Chief/HOD certifying the thesis meets requirements.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>3. Viva-Voice Sheet</h3>
+                    <p>Contains findings from viva-voice examination with signatures from Research Department Head, Thesis Supervisor, and External Expert.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>4. Acknowledgement</h3>
+                    <p>Summary of procedure, purpose, scope, methodologies. Thanks to those directly or indirectly involved in making the report.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>5. Executive Summary/Synopsis</h3>
+                    <p>Information about the research study, overview, problem solved in investigation, data collection methods, sample selected, findings and suggestions. Length around two pages.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>6. Table of Contents</h3>
+                    <p>Provides information about placement of various heads and subheads with page numbers. Main heads in capital letters, small heads in lowercase.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>7. List of Tables and Figures</h3>
+                    <p>Every table and figure with their numbers and page numbers listed separately.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📖</span>B. Body of the Report (Main Part)</h2>
+                
+                <div class="method-card">
+                    <h3>Chapter 1: Introduction</h3>
+                    <p>First unit containing background of topic and situational factors. Includes:</p>
+                    <ul>
+                        <li>Statement of the problem</li>
+                        <li>Objective of the study</li>
+                        <li>Theoretical framework</li>
+                        <li>Variables</li>
+                        <li>Research hypothesis</li>
+                        <li>Definition of the concept</li>
+                        <li>Limitations of the study</li>
+                        <li>Organization of the study</li>
+                    </ul>
+                </div>
+
+                <div class="method-card">
+                    <h3>Chapter 2: Review of Literature</h3>
+                    <p>Gives relevancy between problem and theory. Materials managed serially under depth of knowledge. Findings of earlier researchers taken. Concluding remarks should show research gap and relevance.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>Chapter 3: Research Methodology</h3>
+                    <p>Describes how research is done in reality. Includes:</p>
+                    <ul>
+                        <li>Research design</li>
+                        <li>Population and sample</li>
+                        <li>Sampling procedure</li>
+                        <li>Data gathering procedures</li>
+                        <li>Variables and measures</li>
+                        <li>Data processing procedures</li>
+                        <li>Statistical procedures</li>
+                        <li>Pilot study</li>
+                        <li>Limitations of methodology</li>
+                    </ul>
+                </div>
+
+                <div class="method-card">
+                    <h3>Chapter 4: Data Presentation and Analysis</h3>
+                    <p>Presents data, tables, charts, diagrams systematically:</p>
+                    <ul>
+                        <li>Presentation of the data</li>
+                        <li>Descriptive analysis</li>
+                        <li>Correlation analysis</li>
+                        <li>Inferential analysis</li>
+                    </ul>
+                </div>
+
+                <div class="method-card">
+                    <h3>Chapter 5: Summary, Conclusion and Recommendation</h3>
+                    <p><strong>Summary:</strong> Shows importance of hypothesis to develop theory and solution. Brief review of entire work.</p>
+                    <p><strong>Conclusion:</strong> Concludes major findings and describes implications for decision making. Shows difference between old and new improvements.</p>
+                    <p><strong>Recommendation:</strong> Gives suggestions (not in all reports, mainly for non-academic research). Describes main contribution and facilitates further investigation.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><span class="icon">📚</span>C. Supplementary Section</h2>
+                
+                <div class="method-card">
+                    <h3>References/Bibliography</h3>
+                    <p>List of materials' sources used to make the report. May include books, articles, reports, journals, pictures, or net-based materials. Must follow APA format (American Psychology Association).</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>Appendix</h3>
+                    <p>Contains charts, figures, data, and long questionnaires not fit in main body. Kept for further justification. If many, labeled as Appendix "A", "B", etc. Page numbers usually in Roman numerals (i, ii, iii... or I, II, III...).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all pills
+            const pills = document.querySelectorAll('.nav-pill');
+            pills.forEach(pill => {
+                pill.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked pill
+            event.target.classList.add('active');
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add smooth scroll animation on load
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add hover effect to cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
