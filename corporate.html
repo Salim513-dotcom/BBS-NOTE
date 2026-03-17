@@ -1,648 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundamentals of Corporate Finance</title>
-      <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Landing Page Styles */
-        .landing-page {
-            display: block;
-        }
-
-        .header {
-            text-align: center; 
-            margin-bottom: 60px;
-            background:black ;
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(20px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shine 4s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .header h1 {
-            font-size: 4em;
-            background: white;
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            position: relative;
-            animation: gradientShift 6s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .header p {
-            font-size: 1.4em;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .semester-badge {
-            display: inline-block;
-            background: red;
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2em;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .subject-card {
-            background: whitesmoke;
-            border-radius: 25px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid transparent;
-        }
-
-        .subject-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .subject-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .subject-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
-        }
-
-        .subject-card.corporate-finance {
-            border-image: linear-gradient(45deg, #667eea, #764ba2) 1;
-        }
-
-        .subject-card.financial-institutions {
-            border-image: linear-gradient(45deg, #f093fb, #f5576c) 1;
-        }
-
-        .subject-card.corporate {
-            border-image: linear-gradient(45deg, #4ecdc4, #44a08d) 1;
-        }
-
-        .subject-card.corporate {
-            border-image: linear-gradient(45deg, #ffecd2, #fcb69f) 1;
-        }
-
-        .subject-card.research-methods {
-            border-image: linear-gradient(45deg, #a8edea, #fed6e3) 1;
-        }
-
-        .subject-icon {
-            font-size: 5em;
-            margin-bottom: 25px;
-            display: block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .subject-card h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            color: #333;
-            font-weight: 700;
-        }
-
-        .subject-card p {
-            color: #666;
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .enter-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: rgb(219, 219, 19);
-            border: none;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .enter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-        }
-
-       
-        
-
-        .enter-btn:hover::after {
-            transform: translateX(5px);
-        }
-
-        /* Subject Page Styles */
-        .subject-page {
-            display: none;
-            animation: slideInRight 0.6s ease-out;
-        }
-
-        .subject-page.active {
-            display: block;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .back-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .subject-card h2 {
-    color: #4ecdc4;
-    ;
-    
-}
-.subject-card {
-    background: #232946;
-    color: #f4f4f4;
-    border-radius: 25px;
-}
-
-.subject-card h2 {
-    color: #ffe066;
-}
-
-.subject-card p {
-    color: #e0e0e0;
-}
-
-.subject-icon {
-    color: #4ecdc4;
-}
-
-.enter-btn {
-    background: linear-gradient(45deg, #4ecdc4, #5f2c82);
-    color: #fff;
-}
-
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .subject-header {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .subject-header h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .notes-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(10px);
-        }
-
-        .notes-tools {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .tool-btn {
-            background: darkgrey(45deg, #4ecdc4, #44a08d);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tool-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
-        }
-
-        .notes-editor {
-            width: 100%;
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .notes-editor:focus-within {
-            border-color: darkgray;
-            box-shadow: 0 0 30px rgba(102, 126, 234, 0.2);
-        }
-
-        .note-title {
-            width: 100%;
-            padding: 20px;
-            border: none;
-            background: white;
-            border-radius: 12px;
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .note-title:focus {
-            outline: none;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-        }
-
-        .note-content {
-            width: 100%;
-            height: 600px;
-            padding: 25px;
-            border: none;
-            background: white;
-            border-radius: 12px;
-            font-family: 'Georgia', serif;
-            font-size: 16px;
-            line-height: 1.8;
-            resize: vertical;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .note-content:focus {
-            outline: none;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-        }
-
-        .word-count {
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-            color: #666;
-            font-size: 0.9em;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
-
-        .saved-notes-section {
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(248, 249, 250, 0.8);
-            border-radius: 15px;
-        }
-
-        .saved-notes-section h3 {
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 1.3em;
-        }
-
-        .saved-note-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border-left: 5px solid #667eea;
-        }
-
-        .saved-note-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .note-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .note-item-title {
-            font-weight: bold;
-            color: #333;
-            font-size: 1.1em;
-        }
-
-        .note-item-date {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .note-item-preview {
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .note-item-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .action-btn {
-            padding: 6px 15px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .edit-btn {
-            background: #4caf50;
-            color: white;
-        }
-
-       
-.enter-btn a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-        .delete-btn {
-            background: #f44336;
-            color: white;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5em;
-            }
-            
-            .subjects-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .subject-card {
-                padding: 30px 20px;
-            }
-            
-            .subject-icon {
-                font-size: 3.5em;
-            }
-            
-            .notes-container {
-                padding: 20px;
-            }
-            
-            .note-content {
-                height: 400px;
-            }
-        }
-
-        .floating-save-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, #4caf50, #45a049);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            display: none;
-        }
-
-        .floating-save-btn.show {
-            display: block;
-            animation: bounceIn 0.6s ease;
-        }
-
-        .floating-save-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.6);
-        }
-
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
-            70% {
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏢 corporate finance · complete notes</title>
+  <!-- Google Font & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- MathJax for beautiful equations -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f2f6fc;
+      color: #1e2f3f;
+      line-height: 1.5;
+    }
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+    /* --- SIDEBAR --- */
+    .sidebar {
+      width: 290px;
+      background: linear-gradient(180deg, #102b3f 0%, #1f4460 100%);
+      color: #e6f0ff;
+      padding: 2rem 1.2rem;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      border-right: 1px solid #2f5777;
+    }
+    .sidebar h2 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      border-bottom: 2px solid #5887b0;
+      padding-bottom: 0.75rem;
+      letter-spacing: -0.3px;
+    }
+    .sidebar h2 i { color: #fdcc7a; }
+    .sidebar ul { list-style: none; }
+    .sidebar li { margin-bottom: 0.5rem; }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.7rem 1rem;
+      border-radius: 18px;
+      font-weight: 500;
+      color: #d2e2fa;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+    .sidebar a i { width: 24px; font-size: 1.2rem; color: #9fc1e3; }
+    .sidebar a:hover, .sidebar a.active {
+      background: #316e9e;
+      color: white;
+    }
+    /* --- MAIN --- */
+    .main {
+      flex: 1;
+      padding: 2rem 2.8rem;
+      overflow-x: auto;
+      background: #f8fafd;
+    }
+    .chapter {
+      margin-bottom: 3.5rem;
+      background: white;
+      border-radius: 40px 40px 40px 40px;
+      box-shadow: 0 18px 40px -10px rgba(0,35,70,0.12);
+      padding: 2.5rem 2.8rem;
+      scroll-margin-top: 1rem;
+      border: 1px solid rgba(255,255,255,0.6);
+      backdrop-filter: blur(2px);
+    }
+    .chapter-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 2.2rem;
+      border-bottom: 3px solid #e0ecf9;
+      padding-bottom: 1rem;
+    }
+    .chapter-header i {
+      font-size: 2.8rem;
+      color: #1d6090;
+      background: #e5f0fe;
+      padding: 14px;
+      border-radius: 30px;
+    }
+    .chapter-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(145deg, #0e3c60, #2a5f8a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin: 1.8rem 0;
+    }
+    .card {
+      background: #f9fcff;
+      border-radius: 32px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #d0e2f2;
+      box-shadow: 0 6px 14px rgba(0, 45, 80, 0.05);
+      transition: all 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #9fc5e3;
+      box-shadow: 0 22px 34px -12px rgba(15, 70, 120, 0.2);
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #124267;
+      border-left: 6px solid #3c80b9;
+      padding-left: 1rem;
+    }
+    .card h3 i { color: #266aa0; }
+    .list-styled {
+      list-style: none;
+    }
+    .list-styled li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.8rem;
+      position: relative;
+    }
+    .list-styled li::before {
+      font-family: "Font Awesome 6 Free";
+      content: "\f0a4";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #2c7ab1;
+      font-size: 1.1rem;
+    }
+    .badge {
+      background: #d6e8ff;
+      color: #113855;
+      font-weight: 600;
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-right: 0.7rem;
+    }
+    .formula-block {
+      background: #e2effb;
+      padding: 1.4rem 2rem;
+      border-radius: 28px;
+      font-size: 1.1rem;
+      border-left: 10px solid #2c7ab1;
+      margin: 1.4rem 0;
+      overflow-x: auto;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+    }
+    .formula-block .math, .math-inline {
+      font-size: 1.15rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #f1f8fe;
+      border-radius: 28px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      font-size: 0.98rem;
+      box-shadow: 0 6px 16px rgba(0,30,60,0.06);
+    }
+    th {
+      background: #1f4e73;
+      color: white;
+      font-weight: 600;
+      padding: 0.9rem 1.2rem;
+      font-size: 1rem;
+    }
+    td {
+      padding: 0.8rem 1.2rem;
+      border-bottom: 1px solid #c5dbee;
+    }
+    tr:last-child td { border-bottom: none; }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .ratio-note {
+      background: #fffae9;
+      border-radius: 24px;
+      padding: 1.3rem 2rem;
+      border-left: 8px solid #f3b33d;
+      margin: 1.3rem 0;
+    }
+    hr {
+      border: none;
+      border-top: 2px dashed #bdd7f0;
+      margin: 2.5rem 0 1.5rem;
+    }
+    .page-footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7599b9;
+      margin-top: 2rem;
+      font-weight: 500;
+    }
+    @media (max-width: 800px) {
+      .app { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; }
+      .main { padding: 1.5rem; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Landing Page -->
-        <div id="landing-page" class="landing-page">
-            <div class="header">
-                <h1> Fundamentals of Corporate Finance</h1>
-            </div>
+<div class="app">
+  <aside class="sidebar">
+    <h2><i class="fas fa-chart-pie"></i> corporate</h2>
+    <ul>
+      <li><a href="#ch1" class="active"><i class="fas fa-building"></i>Ch 1 · Introduction</a></li>
+      <li><a href="#ch2"><i class="fas fa-clock"></i>Ch 2 · Short‑term financing</a></li>
+      <li><a href="#ch3"><i class="fas fa-truck"></i>Ch 3 · Term loan & lease</a></li>
+      <li><a href="#ch4"><i class="fas fa-chart-bar"></i>Equity financing</a></li>
+      <li><a href="#ch5"><i class="fas fa-chart-line"></i>AFN & forecasting</a></li>
+      <li><a href="#ch6"><i class="fas fa-scale-balanced"></i>Capital structure</a></li>
+      <li><a href="#ch7"><i class="fas fa-dollar-sign"></i>Exchange rates</a></li>
+      <li><a href="#ch8"><i class="fas fa-share-alt"></i>Mergers</a></li>
+    </ul>
+  </aside>
 
-            <div class="subjects-grid">
-                <div class="subject-card corporate-finance" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="corporate1.html"><h2>1. Introduction to corporate</h2></a></button>
-                </div>
+  <main class="main">
 
-                <div class="subject-card financial-institutions" >
-                    <div class="subject-icon"></div>
-                   
-                    <button class="enter-btn"><a href="corporate2.html"><h2>2. Growth of corporate</h2></a></button>
-                </div>
-
-                <div class="subject-card corporate" >
-                    <div class="subject-icon"></div>
-
-                    <button class="enter-btn"><a href="corporate3.html"><h2>3. corporate Competencies</h2></a></button>
-                </div>
-
-
-                <div class="subject-card corporate" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="corporate4.html"><h2>4. Development of Business Plan</h2></a></button>
-                </div>
-
-
-                <div class="subject-card research-methods" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="corporate5.html"><h2>5. Entrepreneur family business and ethics</h2></a></button>
-                </div>
-                
-                <div class="subject-card corporate" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="corporate6.html"><h2>6. Emerging corporate in nepal
-                </div>
-
-                <div class="subject-card research-methods" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="corporate7.html"><h2>7. Institutional support to corporate development</h2></a></button>
-                </div>
-
-                              <div class="subject-card financial-institutions" >
-                    <div class="subject-icon"></div>
-                   
-                    <button class="enter-btn"><a href="corporate8.html"><h2>2. Growth of corporate</h2></a></button>
-                </div>
-
-                <div class="subject-card corporate" >
-                    <div class="subject-icon"></div>
-
-                    <button class="enter-btn"><a href="corporate9.html"><h2>3. corporate Competencies</h2></a></button>
-                </div>
-
-
-                <div class="subject-card corporate" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="corporate10.html"><h2>4. Development of Business Plan</h2></a></button>
-                </div>
-
-
-                <div class="subject-card research-methods" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="corporate11.html"><h2>5. Entrepreneur family business and ethics</h2></a></button>
-                </div>
-                
-            
+    <!-- CHAPTER 1 · Introduction -->
+    <section id="ch1" class="chapter">
+      <div class="chapter-header"><i class="fas fa-building"></i><h1>Chapter 1 · Introduction to corporate finance</h1></div>
+      <div class="card-grid">
+        <div class="card">
+          <h3><i class="fas fa-bullseye"></i> Responsibilities of financial manager</h3>
+          <ul class="list-styled">
+            <li>Analysis of financial aspects of all decisions</li>
+            <li>Investment decision analysis</li>
+            <li>Dividend decision analysis</li>
+            <li>Financing decision analysis</li>
+            <li>Controlling</li>
+            <li>Financial planning and controlling</li>
+            <li>Analysis of financial market</li>
+            <li>Analysis of risk</li>
+          </ul>
         </div>
+        <div class="card">
+          <h3><i class="fas fa-chart-line"></i> Maximize shareholders' wealth</h3>
+          <ul class="list-styled">
+            <li>Projected cash flow</li>
+            <li>Time element</li>
+            <li>Risk factor</li>
+            <li>Use of debt</li>
+            <li>Dividend policy</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-handcuffs"></i> Agency problem & measures</h3>
+          <ul class="list-styled">
+            <li>Goal / Role / Interest / Threat</li>
+            <li><strong>Measures:</strong> Managerial compensation (basic + bonus + share options + performance share)</li>
+            <li>Direct intervention by shareholders</li>
+            <li>Threat of firing</li>
+            <li>Threat of hostile takeover</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-gavel"></i> Corporate governance & CSR</h3>
+        <div class="two-col">
+          <ul class="list-styled">
+            <li><strong>Elements:</strong> Accountability, Transparency, Fairness, Independence</li>
+          </ul>
+          <ul class="list-styled">
+            <li><strong>CSR:</strong> Shareholders (max wealth), Workers (safe environment, fair pay), Consumers (quality at low price), Government (taxes, rules), Society (jobs, environment)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-        
-    </script>
-<script src="js/footer.js"></script>
-</body>   
+    <!-- CHAPTER 2 · Short term financing -->
+    <section id="ch2" class="chapter">
+      <div class="chapter-header"><i class="fas fa-clock"></i><h1>Chapter 2 · Short term financing</h1></div>
+      <div class="two-col">
+        <div class="card"><h3><i class="fas fa-thumbs-up"></i> Advantages</h3><ul class="list-styled"><li>Low cost, Speed, Flexibility, Profitable, Suitability, Collateral</li></ul></div>
+        <div class="card"><h3><i class="fas fa-thumbs-down"></i> Disadvantages</h3><ul class="list-styled"><li>High risk, Liquidity problem, Uncertainty, Possibility of high cost</li></ul></div>
+      </div>
+      <!-- Accruals -->
+      <div class="card">
+        <h3><i class="fas fa-wallet"></i> Accruals</h3>
+        <table><tr><th>Under present system</th><th>Under proposed system</th></tr><tr><td>Average accruals</td><td>Average accruals</td></tr><tr><td>Payroll expenses</td><td>Payroll expenses</td></tr></table>
+        <div class="formula-block">Fund generated = Change in average accruals × Cost of fund + Decrease in payroll expenses = Total annual savings</div>
+      </div>
+      <!-- Trade credit -->
+      <div class="card">
+        <h3><i class="fas fa-credit-card"></i> Trade credit (1/10, net 30)</h3>
+        <div class="formula-block">
+          \[APC = \frac{DR}{1-DR} \times \frac{360}{\text{Credit period} - \text{Discount period}}\]
+          \[EAR = \left(1 + \frac{APC}{m}\right)^m - 1\]
+        </div>
+        <p><strong>Master rule:</strong> Credit period ∝ 1/cost, Discount period ∝ cost.</p>
+        <table><tr><th>Take loan and take discount</th><th>Don't take loan and don't take discount</th></tr><tr><td>if cost of discount > cost of loan</td><td>if cost of discount < cost of loan</td></tr></table>
+        <table><tr><th>Take loan and don't give discount</th><th>Don't take loan and give discount</th></tr><tr><td>if cost of discount > cost of loan</td><td>if cost of discount < cost of loan</td></tr></table>
+        <p><strong>Master rule (funds generated):</strong> Take loan when cheaper → take discounts on payables, don't give discounts on receivables.</p>
+      </div>
+      <!-- Commercial paper -->
+      <div class="card">
+        <h3><i class="fas fa-file-invoice"></i> Commercial paper</h3>
+        <div class="formula-block">
+          Interest (FV × rate × days/360) + Transaction cost – Interest earned from reinvestment + Transaction cost on reinvestment = Cost of CP<br>
+          \[APC = \frac{\text{Face value} - \text{Price}}{\text{Price}} \times \frac{360}{\text{issued period}}\]
+        </div>
+      </div>
+      <!-- Bank loan types -->
+      <div class="card">
+        <h3><i class="fas fa-university"></i> Bank loans</h3>
+        <div class="formula-block">
+          <strong>Simple interest:</strong> \(APC = \frac{\text{Interest}}{\text{Loan} - \text{CB}}\), \(EAR = (1+\frac{\text{Interest}}{\text{Loan} - \text{CB}})^m -1\)<br>
+          <strong>Discounted interest:</strong> \(APC = \frac{\text{Interest}}{\text{Loan} - \text{CB} - \text{Interest}}\)<br>
+          <strong>Add‑on loan:</strong> Approx APC = Interest / Average loan. Actual: find installment = (Loan+Interest)/n, then solve Loan = Install × PVIFA(k%,n). ANR = k × m, EAR = \((1+ANR/m)^m -1\).
+        </div>
+      </div>
+      <!-- Line of credit -->
+      <div class="card">
+        <h3><i class="fas fa-chart-line"></i> Line of credit</h3>
+        <div class="formula-block">
+          Cost = Interest on used amount + Commitment fee on unused amount.
+        </div>
+      </div>
+      <!-- Factoring (page 6) -->
+      <div class="card">
+        <h3><i class="fas fa-hand-holding-usd"></i> Factoring of receivables</h3>
+        <div class="formula-block">
+          Cost = Interest + Factoring fee – Saving in credit expenses – Saving in bad debt fees.<br>
+          Net amount received = Avg receivables – 20% reserve – 0.25% commission – 1% interest.<br>
+          \[APC = \frac{\text{Cost of financing}}{\text{Net amount received}}\]
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3 · Term loan and lease financing -->
+    <section id="ch3" class="chapter">
+      <div class="chapter-header"><i class="fas fa-truck"></i><h1>Chapter 3 · Term loan and lease financing</h1></div>
+      <div class="two-col">
+        <div class="card">
+          <h3><i class="fas fa-hand-holding-usd"></i> Loan payment schedule</h3>
+          <table><tr><th>Year</th><th>OB</th><th>Interest</th><th>Payment</th><th>CB</th></tr></table>
+          <div class="formula-block">End payment: Payment = Loan / PVIFA(k%,n)<br>Beginning payment: Payment = Loan / [PVIFA(k%,n-1)+1]</div>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-file-contract"></i> Lease vs buy</h3>
+          <div class="formula-block">
+            Lease: Yearly rent – tax saving → CFAT discounted.<br>
+            Buy: Loan payment schedule, interest, depreciation tax saving, salvage value → CFAT discounted.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-calculator"></i> Depreciation methods</h3>
+        <table><tr><th>MACRS</th><th>Straight line</th><th>Reducing balance</th></tr><tr><td>Dep rate × Investment</td><td>(Inv – SV)/n</td><td>Investment × %</td></tr></table>
+        <p>Tax on SV = (SV – NBV) × tax rate (if any). Last year depreciation = NBV – SV.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-list"></i> Characteristics of term loans</h3>
+        <ul class="list-styled"><li>Principal, fixed maturity, interest rate, direct negotiations, collateral, repayment schedule, restrictive covenants.</li></ul>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-balance-scale"></i> Lease vs buy factors & merits</h3>
+        <div class="two-col">
+          <ul class="list-styled"><li>Required rate, maintenance, salvage value, obsolescence, tax rate.</li></ul>
+          <ul class="list-styled"><li><strong>Merits:</strong> tax saving, avoid initial investment, less restrictive, 100% financing, transfer risk, liquidity, quick, low maintenance.</li></ul>
+        </div>
+        <p><strong>Demerits:</strong> more expensive, no salvage value, no depreciation tax benefit, loss of investment tax credit, difficulty in improvements.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-shapes"></i> Forms of lease</h3>
+        <ul class="list-styled"><li>Operating lease, finance lease, sale and leaseback, direct lease, leveraged lease.</li></ul>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4 · Equity financing (voting, rights, warrants, convertibles) -->
+    <section id="ch4" class="chapter">
+      <div class="chapter-header"><i class="fas fa-chart-bar"></i><h1>Equity financing & valuation</h1></div>
+      <div class="card">
+        <h3><i class="fas fa-check-circle"></i> Voting system</h3>
+        <div class="formula-block">Required shares to elect N directors = \(\frac{\text{Desired} \times \text{Total shares}}{\text{Total directors}} + 1\)</div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-book"></i> Shareholders' equity</h3>
+        <table><tr><th>Common Equity</th><td>XXX</td></tr><tr><th>+ Additional paid in capital</th><td>XXX</td></tr><tr><th>+ Retained Earnings</th><td>XXX</td></tr><tr><th>Total common equity</th><td>XXX</td></tr><tr><th>– Treasury stock</th><td>(XXX)</td></tr><tr><th>Net common equity</th><td>XXX</td></tr></table>
+        <div class="formula-block">Book value per share = Net common equity / shares outstanding</div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-gift"></i> Rights offering</h3>
+        <div class="formula-block">
+          New shares = Funds / Subscription price<br>
+          Rights per share = Old shares / New shares<br>
+          Value of right = \(P_0 - P_1\) or TERP = \(\frac{P_0 \times N_{\text{old}} + P_{\text{sub}} \times N_{\text{new}}}{N_{\text{old}}+N_{\text{new}}}\)
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-rocket"></i> IPO / FPO</h3>
+        <div class="formula-block">New shares = (Funds + expenses) / subscription price</div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-ticket"></i> Warrants</h3>
+        <div class="formula-block">Theoretical value = \(\max[(P_0 - X) \times N, 0]\) ; Premium = \(MV_w - TV_w\)</div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-repeat"></i> Convertibles (summary)</h3>
+        <div class="formula-block">
+          CR = Face value / CP ; CP = Face value / CR ; Initial conversion premium = (CP – \(P_0\))/\(P_0\)<br>
+          Conversion value \(C_t = CR \times P_0\) ; Straight bond value \(B_t = I \times PVIFA + M \times PVIF\)<br>
+          Min value = \(\max(C_t, B_t)\) ; Premium over straight = (MV – \(B_t\))/\(B_t\) ; over conversion = (MV – \(C_t\))/\(C_t\)
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5 · AFN & forecasting -->
+    <section id="ch5" class="chapter">
+      <div class="chapter-header"><i class="fas fa-chart-line"></i><h1>AFN & financial forecasting</h1></div>
+      <div class="card">
+        <div class="formula-block">
+          Required increase in assets = \(\frac{A^*}{S_0} \times \Delta S\)<br>
+          Spontaneous financing = \(\frac{L^*}{S_0} \times \Delta S\)<br>
+          \[AFN = \frac{A^* - L^*}{S_0} \times \Delta S - PM \times RR \times S_1 + \text{req. fixed asset}\]
+          \[PEFR = \frac{A^* - L^*}{S_0} - PM \times RR \times \frac{1+g}{g} = \frac{AFN}{\Delta S}\]
+          \(S_1 = S_0(1+g)\), \(RR = 1 - DPR\), DPR = Div / NI, PM = NI / Sales
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-industry"></i> Full capacity adjustment</h3>
+        <div class="formula-block">
+          Full capacity sales = Actual sales / % capacity<br>
+          Target FA/sales = Fixed assets / Full capacity sales<br>
+          Required fixed assets = Target ratio × Projected sales
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-chart-simple"></i> Regression (y = a + bx)</h3>
+        <div class="formula-block">
+          \(b = \frac{N\sum xy - \sum x \sum y}{N\sum x^2 - (\sum x)^2}\) ; \(a = \frac{\sum y - b \sum x}{N}\)
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 6 · Capital structure decision -->
+    <section id="ch6" class="chapter">
+      <div class="chapter-header"><i class="fas fa-scale-balanced"></i><h1>Chapter 7 · Capital structure decision</h1></div>
+      <div class="card">
+        <h3><i class="fas fa-table"></i> Income statement format</h3>
+        <table>
+          <tr><td>Sales (Q×SPPU)</td><td>XXX</td></tr>
+          <tr><td>Less: Variable cost (Q×VCPU)</td><td>(XXX)</td></tr>
+          <tr><td>Contribution margin</td><td>XXX</td></tr>
+          <tr><td>Less: Fixed cost</td><td>(XXX)</td></tr>
+          <tr><td>EBIT</td><td>XXX</td></tr>
+          <tr><td>Less: Interest</td><td>(XXX)</td></tr>
+          <tr><td>EBT</td><td>XXX</td></tr>
+          <tr><td>Less: Tax</td><td>(XXX)</td></tr>
+          <tr><td>EAT</td><td>XXX</td></tr>
+          <tr><td>Less: Preferred dividend</td><td>(XXX)</td></tr>
+          <tr><td>EAS</td><td>XXX</td></tr>
+          <tr><td>EPS</td><td>XXX</td></tr>
+        </table>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3><i class="fas fa-calculator"></i> Leverage</h3>
+          <div class="formula-block">
+            DOL = \(\frac{\text{Sales} - \text{VC}}{\text{EBIT}} = \frac{\text{CM}}{\text{EBIT}}\)<br>
+            DFL = \(\frac{\text{EBIT}}{\text{EBT} - \frac{P_d}{1-t}}\) (or as given)<br>
+            Combined = DOL × DFL
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-chart-pie"></i> Ratios & breakeven</h3>
+          <div class="formula-block">
+            ROA = NI / TA ; ROE = NI / Equity<br>
+            Operating BEP (units) = FC / (SPU – VCPU)<br>
+            Indifference EBIT: \(\frac{(EBIT - I)(1-t) - P_d}{N_A} = \frac{(EBIT - I)(1-t) - P_d}{N_B}\)
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-cog"></i> Beta & WACC</h3>
+        <div class="formula-block">
+          \(\beta_L = \beta_U [1 + (1-t)D/E]\)<br>
+          \(K_s = R_f + (R_m - R_f)\beta\) or \(D_1/P_0 + g\)<br>
+          \(WACC = w_d K_d (1-t) + w_p K_p + w_s K_s\)
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 7 · Exchange rates -->
+    <section id="ch7" class="chapter">
+      <div class="chapter-header"><i class="fas fa-dollar-sign"></i><h1>Exchange rates</h1></div>
+      <div class="card">
+        <h3><i class="fas fa-exchange-alt"></i> Spot & forward</h3>
+        <div class="formula-block">
+          \(S(h,f) = \frac{P_h}{P_f}\) ; cross rates = product of RHS / product of LHS<br>
+          \(F = S \times \frac{1 + k_h}{1 + k_f}\)<br>
+          Annualized premium/discount = \(\frac{FR - SR}{SR} \times \frac{360}{\text{days}} \times 100\)
+        </div>
+        <table>
+          <tr><th>Date</th><th>Case 1</th><th>Case 2</th></tr>
+          <tr><td>1 Jan</td><td>$1 = NPR 100</td><td>$1 = NPR 100</td></tr>
+          <tr><td>10 Jan</td><td>$1 = NPR 110</td><td>$1 = NPR 90</td></tr>
+          <tr><td>Result</td><td>NPR discount, USD premium, depreciation of NPR, appreciation of USD, NPR overvalued, USD undervalued</td><td>NPR premium, USD discount, appreciation of NPR, depreciation of USD, NPR undervalued, USD overvalued</td></tr>
+        </table>
+        <p>Rule: subtract rates → positive = premium, negative = discount.</p>
+      </div>
+    </section>
+
+    <!-- CHAPTER 8 · Mergers and acquisitions -->
+    <section id="ch8" class="chapter">
+      <div class="chapter-header"><i class="fas fa-share-alt"></i><h1>Mergers & acquisitions</h1></div>
+      <div class="card">
+        <h3><i class="fas fa-bullseye"></i> Motives</h3>
+        <ul class="list-styled"><li>Synergy, tax burden minimization, investment minimization, diversification, strategic, economies of scale, business motive.</li></ul>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-diagram-project"></i> Types</h3>
+        <ul class="list-styled"><li>Horizontal (same business)</li><li>Vertical (forward/backward integration)</li><li>Congeneric (same industry, different product)</li><li>Conglomerate (different industry)</li></ul>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-chart-line"></i> Merger analysis</h3>
+        <ul class="list-styled"><li>Valuing target: DCF or market multiple</li><li>Setting bid price</li><li>Post‑merger control</li></ul>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-user-tie"></i> Role of investment banker</h3>
+        <ul class="list-styled"><li>Arranging merger</li><li>Developing defensive tasks</li><li>Establishing fair value</li><li>Financing merger</li><li>Arbitrage operation</li></ul>
+      </div>
+    </section>
+
+    <div class="page-footer">📘 complete corporate finance notes · all formulas included · march 2026</div>
+  </main>
+</div>
+<script>
+  document.querySelectorAll('.sidebar a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
 </html>
