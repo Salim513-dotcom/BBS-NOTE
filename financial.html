@@ -1,640 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundamental of Financial Instituion and Market</title>
-      <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Landing Page Styles */
-        .landing-page {
-            display: block;
-        }
-
-        .header {
-            text-align: center; 
-            margin-bottom: 60px;
-            background:black ;
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(20px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shine 4s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .header h1 {
-            font-size: 4em;
-            background: white;
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            position: relative;
-            animation: gradientShift 6s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .header p {
-            font-size: 1.4em;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .semester-badge {
-            display: inline-block;
-            background: red;
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2em;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .subject-card {
-            background: whitesmoke;
-            border-radius: 25px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid transparent;
-        }
-
-        .subject-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .subject-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .subject-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
-        }
-
-        .subject-card.corporate-finance {
-            border-image: linear-gradient(45deg, #667eea, #764ba2) 1;
-        }
-
-        .subject-card.financial-institutions {
-            border-image: linear-gradient(45deg, #f093fb, #f5576c) 1;
-        }
-
-        .subject-card.financial {
-            border-image: linear-gradient(45deg, #4ecdc4, #44a08d) 1;
-        }
-
-        .subject-card.financial {
-            border-image: linear-gradient(45deg, #ffecd2, #fcb69f) 1;
-        }
-
-        .subject-card.research-methods {
-            border-image: linear-gradient(45deg, #a8edea, #fed6e3) 1;
-        }
-
-        .subject-icon {
-            font-size: 5em;
-            margin-bottom: 25px;
-            display: block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .subject-card h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            color: #333;
-            font-weight: 700;
-        }
-
-        .subject-card p {
-            color: #666;
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .enter-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: rgb(219, 219, 19);
-            border: none;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .enter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-        }
-
-       
-        
-
-        .enter-btn:hover::after {
-            transform: translateX(5px);
-        }
-
-        /* Subject Page Styles */
-        .subject-page {
-            display: none;
-            animation: slideInRight 0.6s ease-out;
-        }
-
-        .subject-page.active {
-            display: block;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .back-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .subject-card h2 {
-    color: #4ecdc4;
-    ;
-    
-}
-.subject-card {
-    background: #232946;
-    color: #f4f4f4;
-    border-radius: 25px;
-}
-
-.subject-card h2 {
-    color: #ffe066;
-}
-
-.subject-card p {
-    color: #e0e0e0;
-}
-
-.subject-icon {
-    color: #4ecdc4;
-}
-
-.enter-btn {
-    background: linear-gradient(45deg, #4ecdc4, #5f2c82);
-    color: #fff;
-}
-
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .subject-header {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .subject-header h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .notes-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(10px);
-        }
-
-        .notes-tools {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .tool-btn {
-            background: darkgrey(45deg, #4ecdc4, #44a08d);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tool-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
-        }
-
-        .notes-editor {
-            width: 100%;
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .notes-editor:focus-within {
-            border-color: darkgray;
-            box-shadow: 0 0 30px rgba(102, 126, 234, 0.2);
-        }
-
-        .note-title {
-            width: 100%;
-            padding: 20px;
-            border: none;
-            background: white;
-            border-radius: 12px;
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .note-title:focus {
-            outline: none;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-        }
-
-        .note-content {
-            width: 100%;
-            height: 600px;
-            padding: 25px;
-            border: none;
-            background: white;
-            border-radius: 12px;
-            font-family: 'Georgia', serif;
-            font-size: 16px;
-            line-height: 1.8;
-            resize: vertical;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .note-content:focus {
-            outline: none;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-        }
-
-        .word-count {
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-            color: #666;
-            font-size: 0.9em;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
-
-        .saved-notes-section {
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(248, 249, 250, 0.8);
-            border-radius: 15px;
-        }
-
-        .saved-notes-section h3 {
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 1.3em;
-        }
-
-        .saved-note-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border-left: 5px solid #667eea;
-        }
-
-        .saved-note-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .note-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .note-item-title {
-            font-weight: bold;
-            color: #333;
-            font-size: 1.1em;
-        }
-
-        .note-item-date {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .note-item-preview {
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .note-item-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .action-btn {
-            padding: 6px 15px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .edit-btn {
-            background: #4caf50;
-            color: white;
-        }
-
-       
-.enter-btn a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-        .delete-btn {
-            background: #f44336;
-            color: white;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5em;
-            }
-            
-            .subjects-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .subject-card {
-                padding: 30px 20px;
-            }
-            
-            .subject-icon {
-                font-size: 3.5em;
-            }
-            
-            .notes-container {
-                padding: 20px;
-            }
-            
-            .note-content {
-                height: 400px;
-            }
-        }
-
-        .floating-save-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, #4caf50, #45a049);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            display: none;
-        }
-
-        .floating-save-btn.show {
-            display: block;
-            animation: bounceIn 0.6s ease;
-        }
-
-        .floating-save-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.6);
-        }
-
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
-            70% {
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏦 complete financial institutions notes</title>
+  <!-- Google Font & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f7fb;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 290px;
+      background: linear-gradient(180deg, #0f2b4b 0%, #1b3a5c 100%);
+      color: #e0edff;
+      padding: 2rem 1.2rem;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .sidebar h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      border-bottom: 2px solid #3a6792;
+      padding-bottom: 0.75rem;
+    }
+    .sidebar h2 i { color: #ffd966; }
+    .sidebar ul { list-style: none; }
+    .sidebar li { margin-bottom: 0.5rem; }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.7rem 1rem;
+      border-radius: 16px;
+      font-weight: 500;
+      color: #d0e2ff;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+    .sidebar a i { width: 24px; font-size: 1.2rem; color: #7ab7d0; }
+    .sidebar a:hover, .sidebar a.active {
+      background: #316e9e;
+      color: white;
+    }
+    .main {
+      flex: 1;
+      padding: 2rem 2.5rem;
+      overflow-x: auto;
+    }
+    .chapter {
+      margin-bottom: 3rem;
+      background: white;
+      border-radius: 36px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      padding: 2rem 2.2rem;
+      scroll-margin-top: 1rem;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+    .chapter-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 2rem;
+      border-bottom: 3px solid #e6eef9;
+      padding-bottom: 0.75rem;
+    }
+    .chapter-header i {
+      font-size: 2.4rem;
+      color: #1e4a76;
+      background: #e8f0fe;
+      padding: 12px;
+      border-radius: 24px;
+    }
+    .chapter-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(145deg, #133a5e, #2b5b8b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin: 1.5rem 0;
+    }
+    .card {
+      background: #f9fcff;
+      border-radius: 28px;
+      padding: 1.5rem 1.8rem;
+      border: 1px solid #cbddee;
+      box-shadow: 0 5px 12px rgba(0, 32, 64, 0.05);
+      transition: 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #9bc0d9;
+      box-shadow: 0 18px 28px -8px rgba(20,60,120,0.2);
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #113855;
+    }
+    .card h3 i { color: #2f6e9e; }
+    .list-styled {
+      list-style: none;
+    }
+    .list-styled li {
+      margin-bottom: 0.7rem;
+      padding-left: 1.8rem;
+      position: relative;
+    }
+    .list-styled li::before {
+      font-family: "Font Awesome 6 Free";
+      content: "\f0a4";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #1e6f9f;
+      font-size: 1rem;
+    }
+    .badge {
+      background: #e0edfc;
+      color: #113855;
+      font-weight: 600;
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-right: 0.6rem;
+    }
+    .formula-block {
+      background: #e4f0fa;
+      padding: 1rem 1.5rem;
+      border-radius: 24px;
+      font-family: 'Inter', monospace;
+      font-weight: 500;
+      border-left: 8px solid #2e7eb0;
+      margin: 1.2rem 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #f2f8ff;
+      border-radius: 24px;
+      overflow: hidden;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 12px rgba(0,20,40,0.05);
+    }
+    th {
+      background: #1e4565;
+      color: white;
+      font-weight: 600;
+      padding: 0.8rem 1rem;
+    }
+    td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #c7ddef;
+    }
+    tr:last-child td { border-bottom: none; }
+    .table-highlight { background: #d9eaf5; }
+    .ratio-note {
+      background: #fff6df;
+      border-radius: 20px;
+      padding: 1rem 1.5rem;
+      border-left: 8px solid #f4b836;
+      margin: 1rem 0;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+    hr {
+      border: none;
+      border-top: 2px dashed #aec9e0;
+      margin: 2rem 0 1rem;
+    }
+    .page-footer {
+      text-align: right;
+      font-size: 0.75rem;
+      color: #7b98b3;
+      margin-top: 1rem;
+    }
+    @media (max-width: 800px) {
+      .app { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; }
+      .main { padding: 1.5rem; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Landing Page -->
-        <div id="landing-page" class="landing-page">
-            <div class="header">
-                <h1> Fundamentals of Financial Institutions and market</h1>
-            </div>
+<div class="app">
+  <aside class="sidebar">
+    <h2><i class="fas fa-landmark"></i> FI notes</h2>
+    <ul>
+      <li><a href="#ch1" class="active"><i class="fas fa-university"></i>Ch 1 · Institutions & risks</a></li>
+      <li><a href="#ch2"><i class="fas fa-chart-line"></i>Ch 2 · Interest rates</a></li>
+      <li><a href="#ch3"><i class="fas fa-building-columns"></i>Ch 3 · Central bank & policy</a></li>
+      <li><a href="#ch4"><i class="fas fa-calculator"></i>Ch 4 · Financial ratios & capital</a></li>
+      <li><a href="#ch5"><i class="fas fa-umbrella"></i>Ch 5 · Insurance ratios</a></li>
+      <li><a href="#ch6"><i class="fas fa-chart-pie"></i>Ch 6 · Mutual funds</a></li>
+      <li><a href="#ch7"><i class="fas fa-hand-holding-heart"></i>Ch 7 · Pension funds</a></li>
+      <li><a href="#ch10"><i class="fas fa-chart-bar"></i>Ch 10 · Investment banks</a></li>
+    </ul>
+  </aside>
 
-            <div class="subjects-grid">
-                <div class="subject-card corporate-finance" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="financial1.html"><h2>1. Introduction/h2></a></button>
-                </div>
+  <main class="main">
 
-                <div class="subject-card financial-institutions" >
-                    <div class="subject-icon"></div>
-                   
-                    <button class="enter-btn"><a href="financial2.html"><h2>2. Determinants of interest rates</h2></a></button>
-                </div>
-
-                <div class="subject-card financial" >
-                    <div class="subject-icon"></div>
-
-                    <button class="enter-btn"><a href="financial3.html"><h2>3. Central bank and monetary policy</h2></a></button>
-                </div>
-
-
-                <div class="subject-card financial" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="financial4.html"><h2>4. Commercial bank</h2></a></button>
-                </div>
-
-
-                <div class="subject-card research-methods" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="financial5.html"><h2>5. Microfinance</h2></a></button>
-                </div>
-                
-                <div class="subject-card financial" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="financial6.html"><h2>6. Saving and credit cooperatives</h2></a></button>
-                </div>
-
-                <div class="subject-card research-methods" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="financial7.html"><h2>7. Insurance companies</h2></a></button>
-                </div>
-
-                              <div class="subject-card financial-institutions" >
-                    <div class="subject-icon"></div>
-                   
-                    <button class="enter-btn"><a href="financial8.html"><h2>8. Investment companies and hedge fund</h2></a></button>
-                </div>
-
-                <div class="subject-card financial" >
-                    <div class="subject-icon"></div>
-
-                    <button class="enter-btn"><a href="financial9.html"><h2>9. Pension fund</h2></a></button>
-                </div>
-
-
-                <div class="subject-card financial" >
-                    <div class="subject-icon"></div>
-                    
-                    <button class="enter-btn"><a href="financial10.html"><h2>10. Investment banks and securities firms</h2></a></button>
-                </div>
-            
+    <!-- CHAPTER 1 (complete) -->
+    <section id="ch1" class="chapter">
+      <div class="chapter-header"><i class="fas fa-building-columns"></i><h1>Chapter 1 · Financial institutions & risks</h1></div>
+      <div class="card-grid">
+        <div class="card"><h3><i class="fas fa-piggy-bank"></i> Depository</h3><ul class="list-styled"><li>Commercial banks</li><li>Development banks</li><li>Microfinance</li><li>Finance</li></ul></div>
+        <div class="card"><h3><i class="fas fa-hand-holding-dollar"></i> Non-depository</h3><ul class="list-styled"><li>Contractual saving institutions</li><li>Insurance companies</li><li>Pension funds</li><li>Investment intermediaries</li><li>Investment banks</li><li>Mutual funds</li></ul></div>
+        <div class="card"><h3><i class="fas fa-scale-balanced"></i> Roles</h3><ul class="list-styled"><li>Maturity intermediation</li><li>Reducing risk via diversification</li><li>Reducing cost of contracting and information processing</li><li>Providing payment mechanism</li></ul></div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-triangle-exclamation"></i> 10 types of risk (with definitions)</h3>
+        <div class="two-col">
+          <ul class="list-styled" style="margin-right:1rem;">
+            <li><span class="badge">1</span> <strong>Credit risk</strong> – borrowers fail to repay interest and principal</li>
+            <li><span class="badge">2</span> <strong>Liquidity risk</strong> – sudden unexpected cash outflow forces asset fire sales<ul style="margin-left:1.5rem; list-style:circle;"><li>Asset side: commitment can’t be honored due to lack of funds</li><li>Liability side: depositors’ demand cannot be met immediately</li></ul></li>
+            <li><span class="badge">3</span> <strong>Interest rate risk</strong> – volatile rates & mismatch in asset/liability maturities</li>
+            <li><span class="badge">4</span> <strong>Market risk</strong> – from trading securities</li>
+            <li><span class="badge">5</span> <strong>Off balance sheet risk</strong> – assets not appearing on balance sheet</li>
+            <li><span class="badge">6</span> <strong>Foreign exchange risk</strong> – exchange rate changes affect value of foreign assets/liabilities</li>
+          </ul>
+          <ul class="list-styled">
+            <li><span class="badge">7</span> <strong>Sovereign risk</strong> – repayments from foreign borrowers interrupted by foreign government</li>
+            <li><span class="badge">8</span> <strong>Technology risk</strong> – tech investments fail to produce anticipated benefits due to high obsolescence</li>
+            <li><span class="badge">9</span> <strong>Operational risk</strong> – losses from inadequate internal processes, people, systems or external events</li>
+            <li><span class="badge">10</span> <strong>Insolvency risk</strong> – not enough capital to offset sudden decline in asset value relative to liabilities</li>
+          </ul>
         </div>
+      </div>
+    </section>
 
-        
-    </script>
-<script src="footer.js"></script>
-</body>   
+    <!-- CHAPTER 2 (complete, page 2-3) -->
+    <section id="ch2" class="chapter">
+      <div class="chapter-header"><i class="fas fa-chart-line"></i><h1>Chapter 2 · Determinants of Interest Rate</h1></div>
+      <div class="card">
+        <h3><i class="fas fa-file-invoice"></i> Treasury & corporate formulas</h3>
+        <div class="formula-block">Treasury Bill = K* + IPn<br>Treasury Bond = K* + IPn + MRPRn<br>Corporate Bond = K* + IPn + MRPRn + LRPRn + DRPRn</div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-table"></i> Algebraic & geometric methods</h3>
+        <div class="formula-block">
+          IP2 = (I1+I2)/2  <br>
+          K1 = K* + IP1<br>
+          K2 = K* + IP2<br>
+          K3 = K* + IP3<br>
+
+          0K1 = K* + I1<br>
+          1K2 = K* + I2<br>
+          2K3 = K* + I3<br>
+
+          tKn = 〖((1+Kn)^n/(1+Kt)^t )〗^(1/(n−t))-1<br>
+          <strong>Pure expectation theory:</strong> No MRPR, LRPR, DRPR in Kn or Kt.
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-lightbulb"></i> Points to remember (pages 2-3)</h3>
+        <ul class="list-styled">
+          <li>1 year bonds: 1 year from now = 1K2, during 1st year = 0K1, after 1 year = 0K1</li>
+          <li><strong>Upward sloping yield curve conditions:</strong> a) inflationary trend expected to increase → long term rates higher; b) maturity risk premium higher on long term securities</li>
+          <li>Economy in recovery → inflation increases</li>
+          <li>One year interest rate expected in year 3 is higher than that of 3 year because of expected increase in future inflation</li>
+          <li>X = Maturity (Years), Y = Yield Rate</li>
+          <li>Longer term bonds exposed to maturity risk due to higher interest rate risk</li>
+          <li>Yield on 3 year securities larger than 2 year securities because inflation rate in 3rd year is higher than inflation premium over 3</li>
+          <li>Default risk: investors may not receive principal & interest</li>
+          <li>Corporate bonds exposed to default risk due to economic uncertainty</li>
+          <li>Pure expectation theory assumes MRPR, DRPR, LRP = 0%</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3 (complete, page 4-5) -->
+    <section id="ch3" class="chapter">
+      <div class="chapter-header"><i class="fas fa-building-columns"></i><h1>Chapter 3 · Central Banks and Monetary Policy</h1></div>
+      <div class="two-col">
+        <div class="card">
+          <h3><i class="fas fa-scale-balanced"></i> Central Bank balance sheet</h3>
+          <table><tr><th>Assets</th><th>Liabilities</th></tr><tr><td>Government Securities</td><td>Reserve</td></tr><tr><td>Discount Loan</td><td>Currency Circulation</td></tr></table>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-building"></i> Commercial Bank balance sheet</h3>
+          <table><tr><th>Assets</th><th>Liabilities</th></tr><tr><td>Reserve at Central Bank</td><td>Demand Deposit</td></tr></table>
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-users"></i> General Public balance sheet</h3>
+        <table><tr><th>Assets</th><th>Liabilities</th></tr><tr><td>Demand Deposit</td><td>Government securities (XXX)</td></tr></table>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-screwdriver-wrench"></i> Tools of monetary policy</h3>
+        <ul class="list-styled">
+          <li><strong>Open market operations:</strong> Buy → increase reserve; Sell → decrease reserve</li>
+          <li><strong>Discount loan/discount rates:</strong> Increase → increase reserve; Decrease → decrease reserve</li>
+          <li><strong>Reserve requirement:</strong> Increase → increase reserve, decrease demand deposit; Decrease → decrease reserve, increase demand deposit</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-calculator"></i> Formulas & multipliers</h3>
+        <div class="formula-block">
+          Required Reserve = Demand Deposit × REQ<br>
+          Demand Deposit = Required Reserve / REQ<br>
+          Deposit Multiplier = 1 / REQ<br>
+          Money Multiplier = (1 + C/D) / (REQ + ER/D + C/D) &nbsp; (e.g., Cash reserve ratio=10, C/D=10/90)<br>
+          Change in Deposit = (1 / (REQn + C)) × ΔR × RCR<br>
+          Change in Deposit = New Deposit – Old Deposit (repeated)
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-arrow-right-arrow-left"></i> Balance sheet changes (for answers)</h3>
+        <ul class="list-styled">
+          <li>Change in Reserve = D × (REQ – REQn)</li>
+          <li>Change in Deposit = (1 / (REQn + C)) × ΔR × RCR</li>
+          <li>Reserve: Total = New Deposit × REQn; Cash = ΔR × (1 – RCR); Reserve = Total – Cash</li>
+          <li>Loan = Deposit – Reserve – Cash</li>
+          <li>Discount loan increases reserve and liabilities of Commercial Bank</li>
+          <li><strong>4 impacts:</strong> Central Bank Asset (Discount loan ↑), Central Bank Liabilities (Reserve ↑), Commercial Bank Asset (Reserve ↑), Commercial Bank Liabilities (Discount Loan ↑)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4 (complete, pages 6-10) -->
+    <section id="ch4" class="chapter">
+      <div class="chapter-header"><i class="fas fa-calculator"></i><h1>Chapter 4 · Financial ratios & capital adequacy</h1></div>
+      
+      <!-- Income statement table -->
+      <div class="card">
+        <h3><i class="fas fa-table"></i> Income statement format</h3>
+        <table>
+          <tr><th>Particulars</th><th>Amount</th></tr>
+          <tr><td>Interest Income</td><td>XXX</td></tr>
+          <tr><td>Interest Expense</td><td>(XXX)</td></tr>
+          <tr><td>Net Interest Income</td><td>XXX</td></tr>
+          <tr><td>Fee and Comm. Income</td><td>XXX</td></tr>
+          <tr><td>Fee and Comm. Expense</td><td>(XXX)</td></tr>
+          <tr><td>Net Fee and Comm. Income</td><td>XXX</td></tr>
+          <tr><td>Net Interest, Fee and Comm. Income</td><td>XXX</td></tr>
+          <tr><td>Net Trading Income</td><td>XXX</td></tr>
+          <tr><td>Other Operating Income</td><td>XXX</td></tr>
+          <tr><td>Total Operating Income</td><td>XXX</td></tr>
+          <tr><td>Impairment Charge for Loans and Other Assets</td><td>(XXX)</td></tr>
+          <tr><td>Net Operating Income</td><td>XXX</td></tr>
+          <tr><td>Operating Expense: a. Personnel Expense b. Other Expense c. Depreciation</td><td>(XXX)</td></tr>
+          <tr><td>Operating Profit</td><td>XXX</td></tr>
+          <tr><td>Non-Operating Income</td><td>XXX</td></tr>
+          <tr><td>Non-Operating Expense</td><td>(XXX)</td></tr>
+          <tr><td>Profit before Income and Tax</td><td>XXX</td></tr>
+          <tr><td>Tax expenses</td><td>(XXX)</td></tr>
+          <tr><td>Profit for the period</td><td>XXX</td></tr>
+        </table>
+      </div>
+
+      <!-- Capital tables -->
+      <div class="two-col">
+        <div class="card">
+          <h3><i class="fas fa-layer-group"></i> Tier 1 capital components</h3>
+          <table><tr><th>Particulars</th><th>Amount</th></tr>
+            <tr><td>Common stock, Paid in capital</td><td>XXX</td></tr>
+            <tr><td>Share Premium</td><td>XXX</td></tr>
+            <tr><td>Retained Earning</td><td>XXX</td></tr>
+            <tr><td>Undistributed Current Year Profit</td><td>XXX</td></tr>
+            <tr><td>Unaudited Current Year Profit</td><td>XXX</td></tr>
+            <tr><td>Reserve and Surplus (General, Other Free, Statutory General, Capital Redemption, Debenture Redemption, Capital Adjustment, Dividend Equalization)</td><td>XXX</td></tr>
+            <tr><td>Common Stock Tier 1 Capital (A)</td><td>XXX</td></tr>
+            <tr><td>Irredeemable Non-cumulative Pref. share</td><td>XXX</td></tr>
+            <tr><td>Perpetual debt instrument</td><td>XXX</td></tr>
+            <tr><td>NCI</td><td>XXX</td></tr>
+            <tr><td>Additional Tier 1 Capital (B)</td><td>XXX</td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-layer-group"></i> Tier 2 (Supplementary) capital</h3>
+          <table><tr><th>Particulars</th><th>Amount</th></tr>
+            <tr><td>Redeemable Non-Cumulative Pref. Share</td><td>XXX</td></tr>
+            <tr><td>Redeemable Cumulative Pref. Share</td><td>XXX</td></tr>
+            <tr><td>Irredeemable Non-Cumulative Pref. Share</td><td>XXX</td></tr>
+            <tr><td>Subordinated term Debt</td><td>XXX</td></tr>
+            <tr><td>General loan loss provision (Max 1.25% of Total Credit RWA)</td><td>XXX</td></tr>
+            <tr><td>Hybrid Capital Instrument</td><td>XXX</td></tr>
+            <tr><td>Asset Revaluation Reserve A</td><td>XXX</td></tr>
+            <tr><td>Exchange Equalization Reserve E</td><td>XXX</td></tr>
+            <tr><td>Investment Adjustment Reserve I</td><td>XXX</td></tr>
+            <tr><td>Other Reserve O</td><td>XXX</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-chart-pie"></i> Key ratios (page 6,8,9)</h3>
+        <div class="formula-block">
+          Income ratio = (Interest + Non-Interest) / Total Operating Income<br>
+          Expense ratio = (Interest + Non-Interest + Provision for loan loss + Tax) / Asset<br>
+          Spread = (Interest Income / Earnings Assets) – (Interest Expense / Earnings Assets) ; Earnings Assets = Investment securities + Net loan and leases<br>
+          Overhead Efficiency = Non-Interest Income / Non-Interest Expenses<br>
+          Core Capital Ratio = (Core Capital / Total RWA) × 100% (min 6%)<br>
+          Capital Adequacy Ratio = (Total Capital / Total RWA) × 100% (min 8.5%)<br>
+          Leverage Ratio = Core Capital / Total RWA<br>
+          Total RWA = Credit RWA + Market RWA + Operational RWA + Supervisory Adjustment<br>
+          Credit RWA = RWA × Asset ; Operational RWA = Capital Charge × 11 (α=15) ; Market RWA = Capital Charge × 11, Capital Charge = Total Open Position × 5%, Total Open Position = OP(foreign) × OP(Domestic) ; Supervisory Adjustment = 3% of Total RWA excluding Supervisory Adj.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-clipboard-list"></i> Portfolio quality ratios (page 8)</h3>
+        <ul class="list-styled">
+          <li>Portfolio at risk ratio = (overdue amount) / Gross loan portfolio</li>
+          <li>Written off / Loan loss ratio = Loan written off in period / Average loan portfolio ( >2% indicative of delinquency)</li>
+          <li>Loan loss reserve ratio = Impairment allowance for loan loss / Gross loan portfolio</li>
+          <li>Risk Coverage ratio = Impairment allowance for loan loss / Amount of overdue loan</li>
+          <li>Non-performing loan ratio = NPL / Gross loan portfolio</li>
+          <li>Delinquent borrower rate = Number of delinquent borrowers / Total active borrowers</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-chart-line"></i> Profitability & sustainability (page 8-9)</h3>
+        <ul class="list-styled">
+          <li>Return on assets = Net Income / Average Total Assets</li>
+          <li>Return on equity = Net Income / Average Equity</li>
+          <li>Portfolio Yield = (Interest, fee and commission income in cash) / Average gross loan portfolio</li>
+          <li>Cost of funds = (Interest, fee and commission income) / (Deposit and borrowings)</li>
+          <li>Spread Ratio = (Interest income / Earnings assets) – (Interest expense / Liabilities) [from page 8]</li>
+          <li>Operational self-sufficiency = Operating Income / (Operating and financing cost + Impairment charge)</li>
+          <li>Operational self-sufficiency (with cost of capital) = Operating Income / (Operating and financing cost + Impairment charge + Cost of capital) ; Cost of capital = Adjustment of Equity</li>
+          <li>Subsidy dependence Index = Total annual subsidies received / Average annual interest income</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-arrows-spin"></i> Leverage, productivity & efficiency (page 9)</h3>
+        <ul class="list-styled">
+          <li>Debt/Equity ratio = Debt / Equity</li>
+          <li>Leverage ratio = Equity / Asset (or as given)</li>
+          <li>Capital Adequacy Ratio = Total capital fund / Total RWA</li>
+          <li>Number of active loans per staff = Total active borrowers / Total active staff</li>
+          <li>Number of active clients per staff = Total active clients / Total active staff</li>
+          <li>Cost per loan = Total operating cost / Total number of borrowers</li>
+          <li>Cost per active client = Total operating cost / Total number of loans</li>
+          <li>Average loan outstanding = Gross loan portfolio / Total borrowers</li>
+          <li>Average loan disbursed = Value of loans disbursed during period / Number of loans disbursed</li>
+          <li>Operating cost ratio = Total operating cost / Average value of loan portfolio (use average when comparing with income statement; use gross when comparing with balance sheet)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-shield"></i> Solvency & other (page 10)</h3>
+        <div class="formula-block">
+          Solvency ratio = Net total asset / (Deposit and share capital)<br>
+          Bank Borrowing = External Capital<br>
+          Institutional capital = Reserve fund + Other fund<br>
+          Net Institutional capital = Reserve fund + Other fund – Prov > 1m<br>
+          Net liquidity = Short term investment + Cash + Bank – Current liability<br>
+          Non-Earning Liquid asset = Cash
+        </div>
+        <h4>Provision matrix example</h4>
+        <table>
+          <tr><th>Time</th><th>Delinquent loans</th><th>Provision</th><th>Amount</th></tr>
+          <tr><td>&lt;1m</td><td>1000</td><td>1%</td><td>10</td></tr>
+          <tr><td>1m-12m</td><td>1000</td><td>35%</td><td>350</td></tr>
+          <tr><td>&gt;12m</td><td>1000</td><td>100%</td><td>1000</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5 Insurance ratios (page 11) -->
+    <section id="ch5" class="chapter">
+      <div class="chapter-header"><i class="fas fa-umbrella"></i><h1>Chapter 5 · Insurance company ratios</h1></div>
+      <div class="card">
+        <h3><i class="fas fa-list"></i> All insurance ratios</h3>
+        <div class="two-col">
+          <ul class="list-styled">
+            <li>Loss ratio = Loss disbursed / Premium earned<br> <small>Loss disbursed = Net claim paid + Increase in claim reserve</small></li>
+            <li>Expense ratio = Expenses / Premium earned</li>
+            <li>Combined ratio = Loss ratio + Expense ratio</li>
+            <li>Dividend ratio = Dividend to shareholders / Premium earned</li>
+            <li>Combined ratio after dividend = LR + ER + DR</li>
+            <li>Investment Yield = Investment income / Premium earned</li>
+            <li>Operating Ratio = Combined ratio after dividend – Investment yield</li>
+            <li>Overall profitability = 100% – Operating ratio</li>
+            <li>Premium growth rate = (Current year – Last year) / Last year</li>
+          </ul>
+          <ul class="list-styled">
+            <li>Risk retention ratio = Net insurance premium / Gross insurance premium</li>
+            <li>Gross earning ratio = Net profit / Gross insurance premium</li>
+            <li>Operating leverage = Net worth / Available solvency margin amount</li>
+            <li>Solvency margin = Available solvency margin amount / Required solvency margin amount ; Available = Total RWA – RWL</li>
+            <li>Yield on Investment = Income from Investment and Loan / Total Investment and Loan</li>
+            <li>Operating expenses ratio = Operating expenses / Net insurance premium</li>
+            <li>Premium to asset ratio = Gross insurance premium / Total assets</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 6 Mutual funds (page 12) -->
+    <section id="ch6" class="chapter">
+      <div class="chapter-header"><i class="fas fa-chart-pie"></i><h1>Chapter 6 · Mutual funds</h1></div>
+      <div class="two-col">
+        <div class="card">
+          <h3><i class="fas fa-coins"></i> Load, discount, premium</h3>
+          <ul class="list-styled">
+            <li>Commission on purchase = Po × (1 + c%)</li>
+            <li>Commission on sales = So × (1 – c%)</li>
+            <li>Premium = NAV × (1 + Premium%)</li>
+            <li>Discount = NAV × (1 – Discount%)</li>
+            <li>Load fee = NAV / (1 – Load fee)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-arrow-trend-up"></i> Return calculations</h3>
+          <ul class="list-styled">
+            <li><strong>Open-ended (no load):</strong> (NAV₁ – NAV₀) / NAV₀</li>
+            <li><strong>Open-ended (with load):</strong> (NAV₁ – OP) / OP</li>
+            <li><strong>Close-ended:</strong> (P₁ – P₀) / P₀</li>
+            <li>Expense ratio = Expenses / Beginning NAV</li>
+            <li>Portfolio turnover ratio = Min(buying, selling) / Average NAV</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 7 Pension funds (page 13) -->
+    <section id="ch7" class="chapter">
+      <div class="chapter-header"><i class="fas fa-hand-holding-heart"></i><h1>Chapter 7 · Pension funds</h1></div>
+      <div class="card-grid">
+        <div class="card">
+          <h3><i class="fas fa-cake-candles"></i> Annual retirement benefits</h3>
+          <ul class="list-styled">
+            <li>Years of service × Benefit per year of service</li>
+            <li>Years of service × Average salary × Benefit payout ratio</li>
+            <li>Years of service × Average salary of last some years × Benefit payout ratio</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-calculator"></i> Accumulation formulas</h3>
+          <div class="formula-block">
+            One year return = (Value at year end – Net contribution) / Net contribution<br>
+            Monthly pension = (Value of service + Amount of last salary) / 50<br>
+            Annual retirement income = Funds available for retirement × Vesting ratio × Annuity rate
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-table"></i> PV/FV annuity table</h3>
+        <table>
+          <tr><th></th><th>Present value</th><th>Future value</th></tr>
+          <tr><td>Annuity</td><td>[1 – 1/(1+k)ⁿ] / k</td><td>[(1+k)ⁿ – 1] / k</td></tr>
+          <tr><td>Annuity due</td><td>×(1+k)</td><td>×(1+k)</td></tr>
+          <tr><td>Single cash flow</td><td>1/(1+k)ⁿ</td><td>(1+k)ⁿ</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-file-invoice"></i> Employee contribution example</h3>
+        <table>
+          <tr><th>Particulars</th><th>Amount</th></tr>
+          <tr><td>Employee contribution</td><td>XXX</td></tr>
+          <tr><td>Less: Tax paid (tax%)</td><td>(XXX)</td></tr>
+          <tr><td>Net employee contribution</td><td>XXX</td></tr>
+          <tr><td>Employer contribution</td><td>XXX</td></tr>
+          <tr><td>Total contribution</td><td>XXX</td></tr>
+          <tr><td>One year earnings (k%)</td><td>XXX</td></tr>
+          <tr><td>Value of investment at year end</td><td>XXX</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- CHAPTER 10 Investment banks (page 14) -->
+    <section id="ch10" class="chapter">
+      <div class="chapter-header"><i class="fas fa-chart-bar"></i><h1>Chapter 10 · Investment banks & securities firms</h1></div>
+      <div class="card">
+        <h3><i class="fas fa-file-signature"></i> Underwriting spread</h3>
+        <table>
+          <tr><th>Particulars</th><th>Amount</th></tr>
+          <tr><td>Gross proceeds</td><td>XXX</td></tr>
+          <tr><td>Less: Net proceeds (to company)</td><td>(XXX)</td></tr>
+          <tr><td><strong>Gross profit</strong></td><td><strong>XXX</strong></td></tr>
+          <tr><td>Less: Underwriter's expenses</td><td>(XXX)</td></tr>
+          <tr><td>Profit to underwriter</td><td>XXX</td></tr>
+        </table>
+        <div class="formula-block">Net proceeds = Gross proceeds – Selling charges</div>
+      </div>
+    </section>
+
+    <div class="page-footer">complete notes from MFI.pdf · march 2026</div>
+  </main>
+</div>
+<script>
+  document.querySelectorAll('.sidebar a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
 </html>
